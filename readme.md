@@ -13,7 +13,7 @@ This API provides you functionality to manage your infrastructure such as:
  [Learn more in the official docs](http://www.outsystems.com/help/servicestudio/9.0/default.htm#APIs/LifeTimeServices/Overview_of_LifeTime_Services_API.htm)
 
 
- # Runnin on .NET
+ ## Running on .NET
 
  If you want to run these samples on your own infrastructure:
 
