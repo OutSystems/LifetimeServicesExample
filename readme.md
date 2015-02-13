@@ -17,6 +17,6 @@ This API provides you functionality to manage your infrastructure such as:
 
  If you want to run these samples on your own infrastructure:
 
-  1. Open in Visual Studio
-  2. Under the Web References folder, update all web references to point to your infrastructure
-  3. Change the ''' AuthenticationExample.cs ''' to include your username and password
+ 1. Open in Visual Studio
+ 2. Under the Web References folder, update all web references to point to your infrastructure
+ 3. Change the  `AuthenticationExample.cs` to include your username and password
