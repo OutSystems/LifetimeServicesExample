@@ -7,8 +7,8 @@ namespace LifetimeIntegration {
         public static String getToken() {
                         
             // LifeTime credentials used to obtain a session token
-            const string username = "jff";
-            const string password = "outsystems";
+            const string username = "user";
+            const string password = "password";
 
             // Authentication Service WS proxy created by Visual Studio
             AuthenticationService service = new AuthenticationService();
