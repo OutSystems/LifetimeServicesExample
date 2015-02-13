@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://LifeTimeServices/UserManagementService/" xmlns:s0="http://www.outsystems.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://LifeTimeServices/UserManagementService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API to manage IT users: users created in the platform. The authenticated user needs to have 'Manage Infrastructure' permissions in the platform to use this API.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.outsystems.com">
+      <s:element name="User_ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="EncryptPassword" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebServiceSimpleAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="User_ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="APIStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="User_DeleteApplicationPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_DeleteApplicationPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_GetAllPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_GetAllPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissions" type="s0:ArrayOfWORCApplicationShortInfoApplicationPermissionsRecord" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRolePermissions" type="s0:ApplicationPermissions" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWORCApplicationShortInfoApplicationPermissionsRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WORCApplicationShortInfoApplicationPermissionsRecord" nillable="true" type="s0:WORCApplicationShortInfoApplicationPermissionsRecord" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WORCApplicationShortInfoApplicationPermissionsRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ssSTApplicationShortInfo" type="s0:ApplicationShortInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ssSTApplicationPermissions" type="s0:ApplicationPermissions" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationShortInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationPermissions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissions" type="s0:ArrayOfEnvironmentPermissionForApplication" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEnvironmentPermissionForApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnvironmentPermissionForApplication" nillable="true" type="s0:EnvironmentPermissionForApplication" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentPermissionForApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentHost" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationPermissionLevelId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="User_UpdateApplicationPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PermissionLevelId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_UpdateApplicationPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_SetApplicationRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_SetApplicationRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_SetInactive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_SetInactiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_GetApplicationPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_GetApplicationPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ArePlatformRolePermissions" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissions" type="s0:ApplicationPermissions" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_SetActive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_SetActiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_CreateOrUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="EncryptPassword" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_CreateOrUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformUser" type="s0:PlatformUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlatformUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="User_ChangeUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="OldUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewUsername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_ChangeUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="1" maxOccurs="1" name="ShowInactive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="User_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformUsers" type="s0:ArrayOfPlatformUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlatformUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatformUser" nillable="true" type="s0:PlatformUser" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="User_ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="s0:User_ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="User_ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="s0:User_ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_DeleteApplicationPermissionSoapIn">
+    <wsdl:part name="parameters" element="s0:User_DeleteApplicationPermission" />
+  </wsdl:message>
+  <wsdl:message name="User_DeleteApplicationPermissionSoapOut">
+    <wsdl:part name="parameters" element="s0:User_DeleteApplicationPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_GetAllPermissionsSoapIn">
+    <wsdl:part name="parameters" element="s0:User_GetAllPermissions" />
+  </wsdl:message>
+  <wsdl:message name="User_GetAllPermissionsSoapOut">
+    <wsdl:part name="parameters" element="s0:User_GetAllPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_UpdateApplicationPermissionSoapIn">
+    <wsdl:part name="parameters" element="s0:User_UpdateApplicationPermission" />
+  </wsdl:message>
+  <wsdl:message name="User_UpdateApplicationPermissionSoapOut">
+    <wsdl:part name="parameters" element="s0:User_UpdateApplicationPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_SetApplicationRoleSoapIn">
+    <wsdl:part name="parameters" element="s0:User_SetApplicationRole" />
+  </wsdl:message>
+  <wsdl:message name="User_SetApplicationRoleSoapOut">
+    <wsdl:part name="parameters" element="s0:User_SetApplicationRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_SetInactiveSoapIn">
+    <wsdl:part name="parameters" element="s0:User_SetInactive" />
+  </wsdl:message>
+  <wsdl:message name="User_SetInactiveSoapOut">
+    <wsdl:part name="parameters" element="s0:User_SetInactiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_GetApplicationPermissionsSoapIn">
+    <wsdl:part name="parameters" element="s0:User_GetApplicationPermissions" />
+  </wsdl:message>
+  <wsdl:message name="User_GetApplicationPermissionsSoapOut">
+    <wsdl:part name="parameters" element="s0:User_GetApplicationPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_SetActiveSoapIn">
+    <wsdl:part name="parameters" element="s0:User_SetActive" />
+  </wsdl:message>
+  <wsdl:message name="User_SetActiveSoapOut">
+    <wsdl:part name="parameters" element="s0:User_SetActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_CreateOrUpdateSoapIn">
+    <wsdl:part name="parameters" element="s0:User_CreateOrUpdate" />
+  </wsdl:message>
+  <wsdl:message name="User_CreateOrUpdateSoapOut">
+    <wsdl:part name="parameters" element="s0:User_CreateOrUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_ChangeUsernameSoapIn">
+    <wsdl:part name="parameters" element="s0:User_ChangeUsername" />
+  </wsdl:message>
+  <wsdl:message name="User_ChangeUsernameSoapOut">
+    <wsdl:part name="parameters" element="s0:User_ChangeUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="User_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:User_List" />
+  </wsdl:message>
+  <wsdl:message name="User_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:User_ListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserManagementServiceSoap">
+    <wsdl:operation name="User_ChangePassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Changes the password of a platform user.</wsdl:documentation>
+      <wsdl:input message="tns:User_ChangePasswordSoapIn" />
+      <wsdl:output message="tns:User_ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_DeleteApplicationPermission">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes the permission a platform user has for a specific application. After executing this operation, the user permissions for the application are defined by the platform roles the platform user has.</wsdl:documentation>
+      <wsdl:input message="tns:User_DeleteApplicationPermissionSoapIn" />
+      <wsdl:output message="tns:User_DeleteApplicationPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_GetAllPermissions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the permissions a platform user has over each existing application and the permissions of her platform role, in each environment of the infrastructure.</wsdl:documentation>
+      <wsdl:input message="tns:User_GetAllPermissionsSoapIn" />
+      <wsdl:output message="tns:User_GetAllPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_UpdateApplicationPermission">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">[DEPRECATED] Use User_SetApplicationRole. Updates the permission a platform user has for an application running on a given environment.</wsdl:documentation>
+      <wsdl:input message="tns:User_UpdateApplicationPermissionSoapIn" />
+      <wsdl:output message="tns:User_UpdateApplicationPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_SetApplicationRole">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the role a platform user has for an application with the given key.</wsdl:documentation>
+      <wsdl:input message="tns:User_SetApplicationRoleSoapIn" />
+      <wsdl:output message="tns:User_SetApplicationRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_SetInactive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deactivates a user in the platform. The user stops having access to all operations that require authentication.</wsdl:documentation>
+      <wsdl:input message="tns:User_SetInactiveSoapIn" />
+      <wsdl:output message="tns:User_SetInactiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_GetApplicationPermissions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the permissions a platform user has over an application, in each environment of the infrastructure, or the permissions from her platform role in case of specific permissions for the application were not specified.</wsdl:documentation>
+      <wsdl:input message="tns:User_GetApplicationPermissionsSoapIn" />
+      <wsdl:output message="tns:User_GetApplicationPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_SetActive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Activates a user in the platform, restoring all permissions the platform user has associated.</wsdl:documentation>
+      <wsdl:input message="tns:User_SetActiveSoapIn" />
+      <wsdl:output message="tns:User_SetActiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_CreateOrUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create a new platform user or updates a platform user that already exists.</wsdl:documentation>
+      <wsdl:input message="tns:User_CreateOrUpdateSoapIn" />
+      <wsdl:output message="tns:User_CreateOrUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_ChangeUsername">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Changes the username of a platform user.</wsdl:documentation>
+      <wsdl:input message="tns:User_ChangeUsernameSoapIn" />
+      <wsdl:output message="tns:User_ChangeUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="User_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the list of platform users, with their information, such as username, email and platform role.</wsdl:documentation>
+      <wsdl:input message="tns:User_ListSoapIn" />
+      <wsdl:output message="tns:User_ListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserManagementServiceSoap" type="tns:UserManagementServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="User_ChangePassword">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_DeleteApplicationPermission">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_DeleteApplicationPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_GetAllPermissions">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_GetAllPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_UpdateApplicationPermission">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_UpdateApplicationPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_SetApplicationRole">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_SetApplicationRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_SetInactive">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_SetInactive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_GetApplicationPermissions">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_GetApplicationPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_SetActive">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_SetActive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_CreateOrUpdate">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_CreateOrUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_ChangeUsername">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_ChangeUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_List">
+      <soap:operation soapAction="http://LifeTimeServices/UserManagementService/User_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserManagementServiceSoap12" type="tns:UserManagementServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="User_ChangePassword">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_DeleteApplicationPermission">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_DeleteApplicationPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_GetAllPermissions">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_GetAllPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_UpdateApplicationPermission">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_UpdateApplicationPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_SetApplicationRole">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_SetApplicationRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_SetInactive">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_SetInactive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_GetApplicationPermissions">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_GetApplicationPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_SetActive">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_SetActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_CreateOrUpdate">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_CreateOrUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_ChangeUsername">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_ChangeUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="User_List">
+      <soap12:operation soapAction="http://LifeTimeServices/UserManagementService/User_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserManagementService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API to manage IT users: users created in the platform. The authenticated user needs to have 'Manage Infrastructure' permissions in the platform to use this API.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+    <wsdl:port name="UserManagementServiceSoap" binding="tns:UserManagementServiceSoap">
+      <soap:address location="http://outsystemscloud/LifeTimeServices/UserManagementService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserManagementServiceSoap12" binding="tns:UserManagementServiceSoap12">
+      <soap12:address location="http://outsystemscloud/LifeTimeServices/UserManagementService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

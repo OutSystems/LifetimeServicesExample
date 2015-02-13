@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://LifeTimeServices/ApplicationManagementService/" xmlns:s0="http://www.outsystems.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://LifeTimeServices/ApplicationManagementService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API for getting information about applications managed by the platform.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.outsystems.com">
+      <s:element name="Application_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebServiceSimpleAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Application_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Applications" type="s0:ArrayOfApplicationInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApplicationInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApplicationInfo" nillable="true" type="s0:ApplicationInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="URLPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IconHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IconURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusInEnvironments" type="s0:ArrayOfEnvironmentApplicationInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSystem" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsHidden" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEnvironmentApplicationInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnvironmentApplicationInfo" nillable="true" type="s0:EnvironmentApplicationInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentApplicationInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExistsInEnvironment" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsModified" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastPublishedOn" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastPublishedBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="APIStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Application_SetTag_Bulk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnvironmentApplicationsForTag" type="s0:EnvironmentApplicationTagList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EnvironmentApplicationTagList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationTagList" type="s0:ArrayOfApplicationTag" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfApplicationTag">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApplicationTag" nillable="true" type="s0:ApplicationTag" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationTag">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Application_SetTag_BulkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Solution_PackAndDownload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationTagInfo" type="s0:ArrayOfApplicationTag" />
+            <s:element minOccurs="0" maxOccurs="1" name="SolutionName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SolutionDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Solution_PackAndDownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationSolutionBinary" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationSolutionSize" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplicationPermissionLevel_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplicationPermissionLevel_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissionLevels" type="s0:ArrayOfApplicationPermissionLevel" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApplicationPermissionLevel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApplicationPermissionLevel" nillable="true" type="s0:ApplicationPermissionLevel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationPermissionLevel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Label" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsComputed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Application_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:Application_List" />
+  </wsdl:message>
+  <wsdl:message name="Application_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:Application_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Application_SetTag_BulkSoapIn">
+    <wsdl:part name="parameters" element="s0:Application_SetTag_Bulk" />
+  </wsdl:message>
+  <wsdl:message name="Application_SetTag_BulkSoapOut">
+    <wsdl:part name="parameters" element="s0:Application_SetTag_BulkResponse" />
+  </wsdl:message>
+  <wsdl:message name="Solution_PackAndDownloadSoapIn">
+    <wsdl:part name="parameters" element="s0:Solution_PackAndDownload" />
+  </wsdl:message>
+  <wsdl:message name="Solution_PackAndDownloadSoapOut">
+    <wsdl:part name="parameters" element="s0:Solution_PackAndDownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationPermissionLevel_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:ApplicationPermissionLevel_List" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationPermissionLevel_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:ApplicationPermissionLevel_ListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ApplicationManagementServiceSoap">
+    <wsdl:operation name="Application_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of applications and their information, that are visible within the platform for the authenticated platform user.</wsdl:documentation>
+      <wsdl:input message="tns:Application_ListSoapIn" />
+      <wsdl:output message="tns:Application_ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Application_SetTag_Bulk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets a tag for each application in a given environment.</wsdl:documentation>
+      <wsdl:input message="tns:Application_SetTag_BulkSoapIn" />
+      <wsdl:output message="tns:Application_SetTag_BulkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Solution_PackAndDownload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a solution binary file containing a set of applications given their versions.</wsdl:documentation>
+      <wsdl:input message="tns:Solution_PackAndDownloadSoapIn" />
+      <wsdl:output message="tns:Solution_PackAndDownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplicationPermissionLevel_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The list of permission levels that a platform user has over an application.</wsdl:documentation>
+      <wsdl:input message="tns:ApplicationPermissionLevel_ListSoapIn" />
+      <wsdl:output message="tns:ApplicationPermissionLevel_ListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApplicationManagementServiceSoap" type="tns:ApplicationManagementServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Application_List">
+      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Application_SetTag_Bulk">
+      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_SetTag_Bulk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Solution_PackAndDownload">
+      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Solution_PackAndDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplicationPermissionLevel_List">
+      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/ApplicationPermissionLevel_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ApplicationManagementServiceSoap12" type="tns:ApplicationManagementServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Application_List">
+      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Application_SetTag_Bulk">
+      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_SetTag_Bulk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Solution_PackAndDownload">
+      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Solution_PackAndDownload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplicationPermissionLevel_List">
+      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/ApplicationPermissionLevel_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApplicationManagementService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API for getting information about applications managed by the platform.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+    <wsdl:port name="ApplicationManagementServiceSoap" binding="tns:ApplicationManagementServiceSoap">
+      <soap:address location="http://outsystemscloud/LifeTimeServices/ApplicationManagementService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ApplicationManagementServiceSoap12" binding="tns:ApplicationManagementServiceSoap12">
+      <soap12:address location="http://outsystemscloud/LifeTimeServices/ApplicationManagementService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

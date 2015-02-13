@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://LifeTimeServices/TeamManagementService/" xmlns:s0="http://www.outsystems.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://LifeTimeServices/TeamManagementService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API to manage teams in the platform.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.outsystems.com">
+      <s:element name="Team_CreateOrUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebServiceSimpleAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Team_CreateOrUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeam" type="s0:Platform_Team" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Platform_Team">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TeamId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="APIStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Team_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_Details">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_DetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeam" type="s0:PlatformTeam" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlatformTeam">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationList" type="s0:ArrayOfApplicationShortInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserList" type="s0:ArrayOfPlatformUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfApplicationShortInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApplicationShortInfo" nillable="true" type="s0:ApplicationShortInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationShortInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlatformUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatformUser" nillable="true" type="s0:PlatformUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlatformUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Team_RemoveApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_RemoveApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeams" type="s0:ArrayOfPlatform_Team" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlatform_Team">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Platform_Team" nillable="true" type="s0:Platform_Team" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Team_AssignApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_AssignApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_RemoveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_RemoveUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_AddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_AddUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Team_CreateOrUpdateSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_CreateOrUpdate" />
+  </wsdl:message>
+  <wsdl:message name="Team_CreateOrUpdateSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_CreateOrUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_DeleteSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_Delete" />
+  </wsdl:message>
+  <wsdl:message name="Team_DeleteSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_DetailsSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_Details" />
+  </wsdl:message>
+  <wsdl:message name="Team_DetailsSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_DetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_RemoveApplicationSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_RemoveApplication" />
+  </wsdl:message>
+  <wsdl:message name="Team_RemoveApplicationSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_RemoveApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_List" />
+  </wsdl:message>
+  <wsdl:message name="Team_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_AssignApplicationSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_AssignApplication" />
+  </wsdl:message>
+  <wsdl:message name="Team_AssignApplicationSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_AssignApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_RemoveUserSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_RemoveUser" />
+  </wsdl:message>
+  <wsdl:message name="Team_RemoveUserSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_RemoveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="Team_AddUserSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_AddUser" />
+  </wsdl:message>
+  <wsdl:message name="Team_AddUserSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_AddUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TeamManagementServiceSoap">
+    <wsdl:operation name="Team_CreateOrUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new team or updates an already existent team.</wsdl:documentation>
+      <wsdl:input message="tns:Team_CreateOrUpdateSoapIn" />
+      <wsdl:output message="tns:Team_CreateOrUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_Delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes a team.</wsdl:documentation>
+      <wsdl:input message="tns:Team_DeleteSoapIn" />
+      <wsdl:output message="tns:Team_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_Details">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the details of a team, with its users and applications.</wsdl:documentation>
+      <wsdl:input message="tns:Team_DetailsSoapIn" />
+      <wsdl:output message="tns:Team_DetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_RemoveApplication">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes an application from a team.</wsdl:documentation>
+      <wsdl:input message="tns:Team_RemoveApplicationSoapIn" />
+      <wsdl:output message="tns:Team_RemoveApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of the teams.</wsdl:documentation>
+      <wsdl:input message="tns:Team_ListSoapIn" />
+      <wsdl:output message="tns:Team_ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_AssignApplication">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Assigns an application to a team, even if the application is already assigned to a team.</wsdl:documentation>
+      <wsdl:input message="tns:Team_AssignApplicationSoapIn" />
+      <wsdl:output message="tns:Team_AssignApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_RemoveUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes a user from a team.</wsdl:documentation>
+      <wsdl:input message="tns:Team_RemoveUserSoapIn" />
+      <wsdl:output message="tns:Team_RemoveUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Team_AddUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a user to a team with a specified role.</wsdl:documentation>
+      <wsdl:input message="tns:Team_AddUserSoapIn" />
+      <wsdl:output message="tns:Team_AddUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TeamManagementServiceSoap" type="tns:TeamManagementServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Team_CreateOrUpdate">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_CreateOrUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_Delete">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_Details">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_Details" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_RemoveApplication">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_RemoveApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_List">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_AssignApplication">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_AssignApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_RemoveUser">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_RemoveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_AddUser">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TeamManagementServiceSoap12" type="tns:TeamManagementServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Team_CreateOrUpdate">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_CreateOrUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_Delete">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_Details">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_Details" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_RemoveApplication">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_RemoveApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_List">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_AssignApplication">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_AssignApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_RemoveUser">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_RemoveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Team_AddUser">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TeamManagementService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API to manage teams in the platform.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+    <wsdl:port name="TeamManagementServiceSoap" binding="tns:TeamManagementServiceSoap">
+      <soap:address location="http://outsystemscloud/LifeTimeServices/TeamManagementService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TeamManagementServiceSoap12" binding="tns:TeamManagementServiceSoap12">
+      <soap12:address location="http://outsystemscloud/LifeTimeServices/TeamManagementService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

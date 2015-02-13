@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://LifeTimeServices/EnvironmentManagementService/" xmlns:s0="http://www.outsystems.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://LifeTimeServices/EnvironmentManagementService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API for getting information about the environments managed by the platform.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.outsystems.com">
+      <s:element name="Environment_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebServiceSimpleAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Environment_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Environments" type="s0:ArrayOfEnvironmentInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEnvironmentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnvironmentInfo" nillable="true" type="s0:EnvironmentInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Order" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseHTTPS" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="InProductionMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberOfFrontEnds" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationServerType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationServer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatabaseProvider" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCloudEnvironment" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="APIStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnvironmentPermissionLevel_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvironmentPermissionLevel_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RolePermissionLevels" type="s0:ArrayOfEnvironmentPermissionLevel" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEnvironmentPermissionLevel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnvironmentPermissionLevel" nillable="true" type="s0:EnvironmentPermissionLevel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentPermissionLevel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Label" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationLevelId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Environment_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:Environment_List" />
+  </wsdl:message>
+  <wsdl:message name="Environment_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:Environment_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvironmentPermissionLevel_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:EnvironmentPermissionLevel_List" />
+  </wsdl:message>
+  <wsdl:message name="EnvironmentPermissionLevel_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:EnvironmentPermissionLevel_ListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EnvironmentManagementServiceSoap">
+    <wsdl:operation name="Environment_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of environments with their information, such as name, version of the OutSystems Platform, and Application Server.</wsdl:documentation>
+      <wsdl:input message="tns:Environment_ListSoapIn" />
+      <wsdl:output message="tns:Environment_ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvironmentPermissionLevel_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The list of permission levels that a platform user has over an environment.</wsdl:documentation>
+      <wsdl:input message="tns:EnvironmentPermissionLevel_ListSoapIn" />
+      <wsdl:output message="tns:EnvironmentPermissionLevel_ListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EnvironmentManagementServiceSoap" type="tns:EnvironmentManagementServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Environment_List">
+      <soap:operation soapAction="http://LifeTimeServices/EnvironmentManagementService/Environment_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvironmentPermissionLevel_List">
+      <soap:operation soapAction="http://LifeTimeServices/EnvironmentManagementService/EnvironmentPermissionLevel_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EnvironmentManagementServiceSoap12" type="tns:EnvironmentManagementServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Environment_List">
+      <soap12:operation soapAction="http://LifeTimeServices/EnvironmentManagementService/Environment_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvironmentPermissionLevel_List">
+      <soap12:operation soapAction="http://LifeTimeServices/EnvironmentManagementService/EnvironmentPermissionLevel_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EnvironmentManagementService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API for getting information about the environments managed by the platform.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+    <wsdl:port name="EnvironmentManagementServiceSoap" binding="tns:EnvironmentManagementServiceSoap">
+      <soap:address location="http://outsystemscloud/LifeTimeServices/EnvironmentManagementService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EnvironmentManagementServiceSoap12" binding="tns:EnvironmentManagementServiceSoap12">
+      <soap12:address location="http://outsystemscloud/LifeTimeServices/EnvironmentManagementService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

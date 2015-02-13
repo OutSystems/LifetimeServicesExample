@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://LifeTimeServices/RoleManagementService/" xmlns:s0="http://www.outsystems.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://LifeTimeServices/RoleManagementService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API to manage IT roles: roles created in the platform. The authenticated user needs to have 'Manage Infrastructure' permissions in the platform to use this API.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.outsystems.com">
+      <s:element name="Role_UpdatePermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewPermissionLevelId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebServiceSimpleAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Role_UpdatePermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="APIStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Role_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UsersNewRoleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Role_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AffectedPlatformUsers" type="s0:ArrayOfPlatformUser" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlatformUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatformUser" nillable="true" type="s0:PlatformUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlatformUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Role_ChangeName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="OldRoleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewRoleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Role_ChangeNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Role_CreateOrUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CanConfigureInfrastructure" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Role_CreateOrUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRole" type="s0:PlatformRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlatformRole">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanManageInfrastructure" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsProtected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowChangePermissions" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionsPerEnvironment" type="s0:ArrayOfEnvironmentPermissionForRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEnvironmentPermissionForRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EnvironmentPermissionForRole" nillable="true" type="s0:EnvironmentPermissionForRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnvironmentPermissionForRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentHost" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnvironmentType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnvironmentPermissionLevelId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Role_List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Role_ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRoles" type="s0:ArrayOfPlatformRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlatformRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatformRole" nillable="true" type="s0:PlatformRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Role_GetPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Role_GetPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRolePermissions" type="s0:ArrayOfEnvironmentPermissionForRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Role_UpdatePermissionSoapIn">
+    <wsdl:part name="parameters" element="s0:Role_UpdatePermission" />
+  </wsdl:message>
+  <wsdl:message name="Role_UpdatePermissionSoapOut">
+    <wsdl:part name="parameters" element="s0:Role_UpdatePermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Role_DeleteSoapIn">
+    <wsdl:part name="parameters" element="s0:Role_Delete" />
+  </wsdl:message>
+  <wsdl:message name="Role_DeleteSoapOut">
+    <wsdl:part name="parameters" element="s0:Role_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Role_ChangeNameSoapIn">
+    <wsdl:part name="parameters" element="s0:Role_ChangeName" />
+  </wsdl:message>
+  <wsdl:message name="Role_ChangeNameSoapOut">
+    <wsdl:part name="parameters" element="s0:Role_ChangeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="Role_CreateOrUpdateSoapIn">
+    <wsdl:part name="parameters" element="s0:Role_CreateOrUpdate" />
+  </wsdl:message>
+  <wsdl:message name="Role_CreateOrUpdateSoapOut">
+    <wsdl:part name="parameters" element="s0:Role_CreateOrUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Role_ListSoapIn">
+    <wsdl:part name="parameters" element="s0:Role_List" />
+  </wsdl:message>
+  <wsdl:message name="Role_ListSoapOut">
+    <wsdl:part name="parameters" element="s0:Role_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Role_GetPermissionsSoapIn">
+    <wsdl:part name="parameters" element="s0:Role_GetPermissions" />
+  </wsdl:message>
+  <wsdl:message name="Role_GetPermissionsSoapOut">
+    <wsdl:part name="parameters" element="s0:Role_GetPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RoleManagementServiceSoap">
+    <wsdl:operation name="Role_UpdatePermission">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the permissions a platform role has in a specified environment.</wsdl:documentation>
+      <wsdl:input message="tns:Role_UpdatePermissionSoapIn" />
+      <wsdl:output message="tns:Role_UpdatePermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Role_Delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes a platform role that already exists. Since the platform requires IT users to have a single platform role, you need to specify a new platform role to grant to the users that are currently set with the role you want to delete.
+</wsdl:documentation>
+      <wsdl:input message="tns:Role_DeleteSoapIn" />
+      <wsdl:output message="tns:Role_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Role_ChangeName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the name of a platform role.</wsdl:documentation>
+      <wsdl:input message="tns:Role_ChangeNameSoapIn" />
+      <wsdl:output message="tns:Role_ChangeNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Role_CreateOrUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new platform role or updates a platform role that already exists.</wsdl:documentation>
+      <wsdl:input message="tns:Role_CreateOrUpdateSoapIn" />
+      <wsdl:output message="tns:Role_CreateOrUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Role_List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all platform roles with their information.</wsdl:documentation>
+      <wsdl:input message="tns:Role_ListSoapIn" />
+      <wsdl:output message="tns:Role_ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Role_GetPermissions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the list of permissions a platform role has in the environments registered in the platform.</wsdl:documentation>
+      <wsdl:input message="tns:Role_GetPermissionsSoapIn" />
+      <wsdl:output message="tns:Role_GetPermissionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RoleManagementServiceSoap" type="tns:RoleManagementServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Role_UpdatePermission">
+      <soap:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_UpdatePermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_Delete">
+      <soap:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_ChangeName">
+      <soap:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_ChangeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_CreateOrUpdate">
+      <soap:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_CreateOrUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_List">
+      <soap:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_GetPermissions">
+      <soap:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_GetPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RoleManagementServiceSoap12" type="tns:RoleManagementServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Role_UpdatePermission">
+      <soap12:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_UpdatePermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_Delete">
+      <soap12:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_ChangeName">
+      <soap12:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_ChangeName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_CreateOrUpdate">
+      <soap12:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_CreateOrUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_List">
+      <soap12:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Role_GetPermissions">
+      <soap12:operation soapAction="http://LifeTimeServices/RoleManagementService/Role_GetPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RoleManagementService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The Platform API to manage IT roles: roles created in the platform. The authenticated user needs to have 'Manage Infrastructure' permissions in the platform to use this API.
+To use this API you need to send an authentication argument with username/password, or use the AuthenticationService Web Service API to acquire a session token to send as argument.</wsdl:documentation>
+    <wsdl:port name="RoleManagementServiceSoap" binding="tns:RoleManagementServiceSoap">
+      <soap:address location="http://outsystemscloud/LifeTimeServices/RoleManagementService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RoleManagementServiceSoap12" binding="tns:RoleManagementServiceSoap12">
+      <soap12:address location="http://outsystemscloud/LifeTimeServices/RoleManagementService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
