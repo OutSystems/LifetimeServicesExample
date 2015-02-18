@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PlatformRoles" type="{http://www.outsystems.com}ArrayOfPlatformRole" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="PlatformRoles" type="{http://www.outsystems.com}ArrayOfPlatformRole" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "platformRoles",
+    "success",
     "status",
-    "success"
+    "platformRoles"
 })
 @XmlRootElement(name = "Role_ListResponse")
 public class RoleListResponse {
 
-    @XmlElement(name = "PlatformRoles")
-    protected ArrayOfPlatformRole platformRoles;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "PlatformRoles")
+    protected ArrayOfPlatformRole platformRoles;
 
     /**
-     * Gets the value of the platformRoles property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfPlatformRole }
-     *     
      */
-    public ArrayOfPlatformRole getPlatformRoles() {
-        return platformRoles;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the platformRoles property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfPlatformRole }
-     *     
      */
-    public void setPlatformRoles(ArrayOfPlatformRole value) {
-        this.platformRoles = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class RoleListResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the platformRoles property.
      * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfPlatformRole }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public ArrayOfPlatformRole getPlatformRoles() {
+        return platformRoles;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the platformRoles property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfPlatformRole }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setPlatformRoles(ArrayOfPlatformRole value) {
+        this.platformRoles = value;
     }
 
 }

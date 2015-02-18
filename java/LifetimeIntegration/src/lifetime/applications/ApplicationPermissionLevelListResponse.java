@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ApplicationPermissionLevels" type="{http://www.outsystems.com}ArrayOfApplicationPermissionLevel" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="ApplicationPermissionLevels" type="{http://www.outsystems.com}ArrayOfApplicationPermissionLevel" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "applicationPermissionLevels",
+    "success",
     "status",
-    "success"
+    "applicationPermissionLevels"
 })
 @XmlRootElement(name = "ApplicationPermissionLevel_ListResponse")
 public class ApplicationPermissionLevelListResponse {
 
-    @XmlElement(name = "ApplicationPermissionLevels")
-    protected ArrayOfApplicationPermissionLevel applicationPermissionLevels;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "ApplicationPermissionLevels")
+    protected ArrayOfApplicationPermissionLevel applicationPermissionLevels;
 
     /**
-     * Gets the value of the applicationPermissionLevels property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfApplicationPermissionLevel }
-     *     
      */
-    public ArrayOfApplicationPermissionLevel getApplicationPermissionLevels() {
-        return applicationPermissionLevels;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the applicationPermissionLevels property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfApplicationPermissionLevel }
-     *     
      */
-    public void setApplicationPermissionLevels(ArrayOfApplicationPermissionLevel value) {
-        this.applicationPermissionLevels = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class ApplicationPermissionLevelListResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the applicationPermissionLevels property.
      * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfApplicationPermissionLevel }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public ArrayOfApplicationPermissionLevel getApplicationPermissionLevels() {
+        return applicationPermissionLevels;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the applicationPermissionLevels property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfApplicationPermissionLevel }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setApplicationPermissionLevels(ArrayOfApplicationPermissionLevel value) {
+        this.applicationPermissionLevels = value;
     }
 
 }

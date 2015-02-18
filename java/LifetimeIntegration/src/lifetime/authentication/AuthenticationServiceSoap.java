@@ -27,8 +27,8 @@ public interface AuthenticationServiceSoap {
      * Returns an authentication token that is valid for 5 minutes.
      * 
      * @param username
-     * @param status
      * @param token
+     * @param status
      * @param success
      * @param password
      */
@@ -40,11 +40,11 @@ public interface AuthenticationServiceSoap {
         String username,
         @WebParam(name = "Password", targetNamespace = "http://www.outsystems.com")
         String password,
-        @WebParam(name = "Token", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<String> token,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "Token", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<String> token);
 
 }

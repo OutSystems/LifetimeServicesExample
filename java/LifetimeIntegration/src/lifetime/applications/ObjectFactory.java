@@ -30,35 +30,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ApplicationPermissionLevelList }
+     * Create an instance of {@link ArrayOfEnvironmentApplicationInfo }
      * 
      */
-    public ApplicationPermissionLevelList createApplicationPermissionLevelList() {
-        return new ApplicationPermissionLevelList();
+    public ArrayOfEnvironmentApplicationInfo createArrayOfEnvironmentApplicationInfo() {
+        return new ArrayOfEnvironmentApplicationInfo();
     }
 
     /**
-     * Create an instance of {@link SolutionPackAndDownload }
+     * Create an instance of {@link ApplicationInfo }
      * 
      */
-    public SolutionPackAndDownload createSolutionPackAndDownload() {
-        return new SolutionPackAndDownload();
+    public ApplicationInfo createApplicationInfo() {
+        return new ApplicationInfo();
     }
 
     /**
-     * Create an instance of {@link ApplicationList }
+     * Create an instance of {@link ApplicationPermissionLevelListResponse }
      * 
      */
-    public ApplicationList createApplicationList() {
-        return new ApplicationList();
-    }
-
-    /**
-     * Create an instance of {@link WebServiceSimpleAuthentication }
-     * 
-     */
-    public WebServiceSimpleAuthentication createWebServiceSimpleAuthentication() {
-        return new WebServiceSimpleAuthentication();
+    public ApplicationPermissionLevelListResponse createApplicationPermissionLevelListResponse() {
+        return new ApplicationPermissionLevelListResponse();
     }
 
     /**
@@ -70,19 +62,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ApplicationListResponse }
+     * 
+     */
+    public ApplicationListResponse createApplicationListResponse() {
+        return new ApplicationListResponse();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfApplicationTag }
      * 
      */
     public ArrayOfApplicationTag createArrayOfApplicationTag() {
         return new ArrayOfApplicationTag();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationInfo }
-     * 
-     */
-    public ApplicationInfo createApplicationInfo() {
-        return new ApplicationInfo();
     }
 
     /**
@@ -102,43 +94,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfEnvironmentApplicationInfo }
-     * 
-     */
-    public ArrayOfEnvironmentApplicationInfo createArrayOfEnvironmentApplicationInfo() {
-        return new ArrayOfEnvironmentApplicationInfo();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationSetTagBulk }
-     * 
-     */
-    public ApplicationSetTagBulk createApplicationSetTagBulk() {
-        return new ApplicationSetTagBulk();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationSetTagBulkResponse }
-     * 
-     */
-    public ApplicationSetTagBulkResponse createApplicationSetTagBulkResponse() {
-        return new ApplicationSetTagBulkResponse();
-    }
-
-    /**
      * Create an instance of {@link ApplicationPermissionLevel }
      * 
      */
     public ApplicationPermissionLevel createApplicationPermissionLevel() {
         return new ApplicationPermissionLevel();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationPermissionLevelListResponse }
-     * 
-     */
-    public ApplicationPermissionLevelListResponse createApplicationPermissionLevelListResponse() {
-        return new ApplicationPermissionLevelListResponse();
     }
 
     /**
@@ -158,27 +118,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ApplicationListResponse }
-     * 
-     */
-    public ApplicationListResponse createApplicationListResponse() {
-        return new ApplicationListResponse();
-    }
-
-    /**
-     * Create an instance of {@link SolutionPackAndDownloadResponse }
-     * 
-     */
-    public SolutionPackAndDownloadResponse createSolutionPackAndDownloadResponse() {
-        return new SolutionPackAndDownloadResponse();
-    }
-
-    /**
      * Create an instance of {@link EnvironmentApplicationTagList }
      * 
      */
     public EnvironmentApplicationTagList createEnvironmentApplicationTagList() {
         return new EnvironmentApplicationTagList();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationSetTagResponse }
+     * 
+     */
+    public ApplicationSetTagResponse createApplicationSetTagResponse() {
+        return new ApplicationSetTagResponse();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationList }
+     * 
+     */
+    public ApplicationList createApplicationList() {
+        return new ApplicationList();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationPermissionLevelList }
+     * 
+     */
+    public ApplicationPermissionLevelList createApplicationPermissionLevelList() {
+        return new ApplicationPermissionLevelList();
+    }
+
+    /**
+     * Create an instance of {@link WebServiceSimpleAuthentication }
+     * 
+     */
+    public WebServiceSimpleAuthentication createWebServiceSimpleAuthentication() {
+        return new WebServiceSimpleAuthentication();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationSetTag }
+     * 
+     */
+    public ApplicationSetTag createApplicationSetTag() {
+        return new ApplicationSetTag();
     }
 
 }

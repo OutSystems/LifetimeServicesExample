@@ -22,7 +22,7 @@ public class RoleGetPermissionsExample {
 		Holder<Boolean> success = new Holder<Boolean>();
 		
         //Invoke the Role_GetPermissions web method for the Developer role
-		service.getRoleManagementServiceSoap().roleGetPermissions(authentication, "Developer", permissions, status, success);
+		service.getRoleManagementServiceSoap().roleGetPermissions(authentication, "Developer", success, status, permissions);
 		
 		// If the call was successful, print information about the roles
 		if (success.value) {

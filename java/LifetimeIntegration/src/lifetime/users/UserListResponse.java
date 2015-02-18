@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PlatformUsers" type="{http://www.outsystems.com}ArrayOfPlatformUser" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="PlatformUsers" type="{http://www.outsystems.com}ArrayOfPlatformUser" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "platformUsers",
+    "success",
     "status",
-    "success"
+    "platformUsers"
 })
 @XmlRootElement(name = "User_ListResponse")
 public class UserListResponse {
 
-    @XmlElement(name = "PlatformUsers")
-    protected ArrayOfPlatformUser platformUsers;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "PlatformUsers")
+    protected ArrayOfPlatformUser platformUsers;
 
     /**
-     * Gets the value of the platformUsers property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfPlatformUser }
-     *     
      */
-    public ArrayOfPlatformUser getPlatformUsers() {
-        return platformUsers;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the platformUsers property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfPlatformUser }
-     *     
      */
-    public void setPlatformUsers(ArrayOfPlatformUser value) {
-        this.platformUsers = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class UserListResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the platformUsers property.
      * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfPlatformUser }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public ArrayOfPlatformUser getPlatformUsers() {
+        return platformUsers;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the platformUsers property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfPlatformUser }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setPlatformUsers(ArrayOfPlatformUser value) {
+        this.platformUsers = value;
     }
 
 }

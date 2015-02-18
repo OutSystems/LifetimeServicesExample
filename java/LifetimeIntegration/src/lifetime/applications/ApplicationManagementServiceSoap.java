@@ -37,10 +37,12 @@ public interface ApplicationManagementServiceSoap {
     public void applicationList(
         @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
         WebServiceSimpleAuthentication authentication,
-        @WebParam(name = "Applications", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfApplicationInfo> applications,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status);
+        Holder<APIStatus> status,
+        @WebParam(name = "Applications", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfApplicationInfo> applications);
 
     /**
      * Sets a tag for each application in a given environment.
@@ -50,54 +52,18 @@ public interface ApplicationManagementServiceSoap {
      * @param authentication
      * @param success
      */
-    @WebMethod(operationName = "Application_SetTag_Bulk", action = "http://LifeTimeServices/ApplicationManagementService/Application_SetTag_Bulk")
-    @RequestWrapper(localName = "Application_SetTag_Bulk", targetNamespace = "http://www.outsystems.com", className = "lifetime.applications.ApplicationSetTagBulk")
-    @ResponseWrapper(localName = "Application_SetTag_BulkResponse", targetNamespace = "http://www.outsystems.com", className = "lifetime.applications.ApplicationSetTagBulkResponse")
-    public void applicationSetTagBulk(
+    @WebMethod(operationName = "Application_SetTag", action = "http://LifeTimeServices/ApplicationManagementService/Application_SetTag")
+    @RequestWrapper(localName = "Application_SetTag", targetNamespace = "http://www.outsystems.com", className = "lifetime.applications.ApplicationSetTag")
+    @ResponseWrapper(localName = "Application_SetTagResponse", targetNamespace = "http://www.outsystems.com", className = "lifetime.applications.ApplicationSetTagResponse")
+    public void applicationSetTag(
         @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
         WebServiceSimpleAuthentication authentication,
         @WebParam(name = "EnvironmentApplicationsForTag", targetNamespace = "http://www.outsystems.com")
         EnvironmentApplicationTagList environmentApplicationsForTag,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
-
-    /**
-     * Returns a solution binary file containing a set of applications given their versions.
-     * 
-     * @param applicationTagInfo
-     * @param status
-     * @param authentication
-     * @param applicationSolutionBinary
-     * @param solutionName
-     * @param solutionDescription
-     * @param environmentKey
-     * @param success
-     * @param applicationSolutionSize
-     */
-    @WebMethod(operationName = "Solution_PackAndDownload", action = "http://LifeTimeServices/ApplicationManagementService/Solution_PackAndDownload")
-    @RequestWrapper(localName = "Solution_PackAndDownload", targetNamespace = "http://www.outsystems.com", className = "lifetime.applications.SolutionPackAndDownload")
-    @ResponseWrapper(localName = "Solution_PackAndDownloadResponse", targetNamespace = "http://www.outsystems.com", className = "lifetime.applications.SolutionPackAndDownloadResponse")
-    public void solutionPackAndDownload(
-        @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
-        WebServiceSimpleAuthentication authentication,
-        @WebParam(name = "EnvironmentKey", targetNamespace = "http://www.outsystems.com")
-        String environmentKey,
-        @WebParam(name = "ApplicationTagInfo", targetNamespace = "http://www.outsystems.com")
-        ArrayOfApplicationTag applicationTagInfo,
-        @WebParam(name = "SolutionName", targetNamespace = "http://www.outsystems.com")
-        String solutionName,
-        @WebParam(name = "SolutionDescription", targetNamespace = "http://www.outsystems.com")
-        String solutionDescription,
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
-        @WebParam(name = "ApplicationSolutionBinary", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<byte[]> applicationSolutionBinary,
-        @WebParam(name = "ApplicationSolutionSize", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<String> applicationSolutionSize,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<APIStatus> status);
 
     /**
      * The list of permission levels that a platform user has over an application.
@@ -113,11 +79,11 @@ public interface ApplicationManagementServiceSoap {
     public void applicationPermissionLevelList(
         @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
         WebServiceSimpleAuthentication authentication,
-        @WebParam(name = "ApplicationPermissionLevels", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfApplicationPermissionLevel> applicationPermissionLevels,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "ApplicationPermissionLevels", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfApplicationPermissionLevel> applicationPermissionLevels);
 
 }

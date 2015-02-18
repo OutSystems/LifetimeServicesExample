@@ -23,7 +23,7 @@ public class EnvironmentListExample {
 		Holder<Boolean> success = new Holder<Boolean>();
 		
 		// Invoke the Environment_List web method
-		service.getEnvironmentManagementServiceSoap().environmentList(authentication, environmentList, status, success);
+		service.getEnvironmentManagementServiceSoap().environmentList(authentication, success, status, environmentList);
 		
 		// If the call was successful, print information about the environments
 		if (success.value) {

@@ -18,10 +18,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="ApplicationPermissions" type="{http://www.outsystems.com}ArrayOfWORCApplicationShortInfoApplicationPermissionsRecord" minOccurs="0"/>
  *         &lt;element name="PlatformRolePermissions" type="{http://www.outsystems.com}ApplicationPermissions" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
- *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,22 +32,62 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "applicationPermissions",
-    "platformRolePermissions",
+    "success",
     "status",
-    "success"
+    "applicationPermissions",
+    "platformRolePermissions"
 })
 @XmlRootElement(name = "User_GetAllPermissionsResponse")
 public class UserGetAllPermissionsResponse {
 
+    @XmlElement(name = "Success")
+    protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
     @XmlElement(name = "ApplicationPermissions")
     protected ArrayOfWORCApplicationShortInfoApplicationPermissionsRecord applicationPermissions;
     @XmlElement(name = "PlatformRolePermissions")
     protected ApplicationPermissions platformRolePermissions;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
-    @XmlElement(name = "Success")
-    protected boolean success;
+
+    /**
+     * Gets the value of the success property.
+     * 
+     */
+    public boolean isSuccess() {
+        return success;
+    }
+
+    /**
+     * Sets the value of the success property.
+     * 
+     */
+    public void setSuccess(boolean value) {
+        this.success = value;
+    }
+
+    /**
+     * Gets the value of the status property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link APIStatus }
+     *     
+     */
+    public APIStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets the value of the status property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link APIStatus }
+     *     
+     */
+    public void setStatus(APIStatus value) {
+        this.status = value;
+    }
 
     /**
      * Gets the value of the applicationPermissions property.
@@ -95,46 +135,6 @@ public class UserGetAllPermissionsResponse {
      */
     public void setPlatformRolePermissions(ApplicationPermissions value) {
         this.platformRolePermissions = value;
-    }
-
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link APIStatus }
-     *     
-     */
-    public APIStatus getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link APIStatus }
-     *     
-     */
-    public void setStatus(APIStatus value) {
-        this.status = value;
-    }
-
-    /**
-     * Gets the value of the success property.
-     * 
-     */
-    public boolean isSuccess() {
-        return success;
-    }
-
-    /**
-     * Sets the value of the success property.
-     * 
-     */
-    public void setSuccess(boolean value) {
-        this.success = value;
     }
 
 }

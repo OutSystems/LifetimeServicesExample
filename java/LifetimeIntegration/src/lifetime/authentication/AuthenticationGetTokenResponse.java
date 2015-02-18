@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Token" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="Token" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "token",
+    "success",
     "status",
-    "success"
+    "token"
 })
 @XmlRootElement(name = "Authentication_GetTokenResponse")
 public class AuthenticationGetTokenResponse {
 
-    @XmlElement(name = "Token")
-    protected String token;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "Token")
+    protected String token;
 
     /**
-     * Gets the value of the token property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getToken() {
-        return token;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the token property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setToken(String value) {
-        this.token = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class AuthenticationGetTokenResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the token property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public String getToken() {
+        return token;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the token property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setToken(String value) {
+        this.token = value;
     }
 
 }

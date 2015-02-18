@@ -18,8 +18,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,16 +30,32 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "status",
-    "success"
+    "success",
+    "status"
 })
 @XmlRootElement(name = "User_DeleteApplicationPermissionResponse")
 public class UserDeleteApplicationPermissionResponse {
 
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+
+    /**
+     * Gets the value of the success property.
+     * 
+     */
+    public boolean isSuccess() {
+        return success;
+    }
+
+    /**
+     * Sets the value of the success property.
+     * 
+     */
+    public void setSuccess(boolean value) {
+        this.success = value;
+    }
 
     /**
      * Gets the value of the status property.
@@ -63,22 +79,6 @@ public class UserDeleteApplicationPermissionResponse {
      */
     public void setStatus(APIStatus value) {
         this.status = value;
-    }
-
-    /**
-     * Gets the value of the success property.
-     * 
-     */
-    public boolean isSuccess() {
-        return success;
-    }
-
-    /**
-     * Sets the value of the success property.
-     * 
-     */
-    public void setSuccess(boolean value) {
-        this.success = value;
     }
 
 }

@@ -23,7 +23,7 @@ public class EnvironmentPermissionLevelExample {
 		Holder<Boolean> success = new Holder<Boolean>();
 		
 		// Invoke the EnvironmentPermissionLevel_List web method
-		service.getEnvironmentManagementServiceSoap().environmentPermissionLevelList(authentication, permissionLevels, status, success);
+		service.getEnvironmentManagementServiceSoap().environmentPermissionLevelList(authentication, success, status, permissionLevels);
 		
 		// If the call was successful, print information about the environments
 		if (success.value) {

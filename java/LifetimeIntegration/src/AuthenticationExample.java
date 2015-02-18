@@ -21,7 +21,7 @@ public class AuthenticationExample {
         
 		// Authentication Service WS proxy created by Oracle wsimport tool
         AuthenticationService service = new AuthenticationService();
-        service.getAuthenticationServiceSoap().authenticationGetToken(username, password, token, status, success);
+        service.getAuthenticationServiceSoap().authenticationGetToken(username, password, success, status, token);
         
 //        if(success.value) {
 //        	System.out.println(String.format("Token obtained %s", token.value));

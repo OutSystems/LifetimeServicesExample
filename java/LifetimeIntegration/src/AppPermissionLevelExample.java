@@ -19,11 +19,12 @@ public class AppPermissionLevelExample {
 		
 		// Objects to store the values returned
 		Holder<ArrayOfApplicationPermissionLevel> permissionLevels = new Holder<ArrayOfApplicationPermissionLevel>();
-		Holder<APIStatus> status = new Holder<APIStatus>();
 		Holder<Boolean> success = new Holder<Boolean>();
+		Holder<APIStatus> status = new Holder<APIStatus>();
+		
 		
 		// Invoke the Application_List web method
-		service.getApplicationManagementServiceSoap().applicationPermissionLevelList(authentication, permissionLevels, status, success);
+		service.getApplicationManagementServiceSoap().applicationPermissionLevelList(authentication, success, status, permissionLevels);
 		
         // If the call was successful, print the permission levels available
 		if (success.value) {

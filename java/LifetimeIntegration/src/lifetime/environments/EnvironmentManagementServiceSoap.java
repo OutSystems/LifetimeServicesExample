@@ -37,12 +37,12 @@ public interface EnvironmentManagementServiceSoap {
     public void environmentList(
         @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
         WebServiceSimpleAuthentication authentication,
-        @WebParam(name = "Environments", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfEnvironmentInfo> environments,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "Environments", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfEnvironmentInfo> environments);
 
     /**
      * The list of permission levels that a platform user has over an environment.
@@ -58,11 +58,11 @@ public interface EnvironmentManagementServiceSoap {
     public void environmentPermissionLevelList(
         @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
         WebServiceSimpleAuthentication authentication,
-        @WebParam(name = "RolePermissionLevels", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfEnvironmentPermissionLevel> rolePermissionLevels,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "RolePermissionLevels", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfEnvironmentPermissionLevel> rolePermissionLevels);
 
 }

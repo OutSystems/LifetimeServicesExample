@@ -33,7 +33,7 @@ public class ApplicationManagementService
         try {
             URL baseUrl;
             baseUrl = lifetime.applications.ApplicationManagementService.class.getResource(".");
-            url = new URL(baseUrl, "http://pcptlsl/LifeTimeServices/ApplicationManagementService.asmx?WSDL");
+            url = new URL(baseUrl, "http://outsystemscloud/LifeTimeServices/ApplicationManagementService.asmx?WSDL");
         } catch (MalformedURLException e) {
             logger.warning("Failed to create URL for the wsdl Location: 'http://outsystemscloud/LifeTimeServices/ApplicationManagementService.asmx?WSDL', retrying as a local file");
             logger.warning(e.getMessage());

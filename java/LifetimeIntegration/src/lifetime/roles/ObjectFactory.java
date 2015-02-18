@@ -38,11 +38,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link APIStatus }
+     * Create an instance of {@link ArrayOfPlatformUser }
      * 
      */
-    public APIStatus createAPIStatus() {
-        return new APIStatus();
+    public ArrayOfPlatformUser createArrayOfPlatformUser() {
+        return new ArrayOfPlatformUser();
     }
 
     /**
@@ -54,11 +54,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfPlatformRole }
+     * Create an instance of {@link PlatformRole }
      * 
      */
-    public ArrayOfPlatformRole createArrayOfPlatformRole() {
-        return new ArrayOfPlatformRole();
+    public PlatformRole createPlatformRole() {
+        return new PlatformRole();
     }
 
     /**
@@ -94,6 +94,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfPlatformRole }
+     * 
+     */
+    public ArrayOfPlatformRole createArrayOfPlatformRole() {
+        return new ArrayOfPlatformRole();
+    }
+
+    /**
      * Create an instance of {@link RoleGetPermissions }
      * 
      */
@@ -118,14 +126,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfPlatformUser }
-     * 
-     */
-    public ArrayOfPlatformUser createArrayOfPlatformUser() {
-        return new ArrayOfPlatformUser();
-    }
-
-    /**
      * Create an instance of {@link RoleUpdatePermission }
      * 
      */
@@ -142,6 +142,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link APIStatus }
+     * 
+     */
+    public APIStatus createAPIStatus() {
+        return new APIStatus();
+    }
+
+    /**
      * Create an instance of {@link RoleCreateOrUpdateResponse }
      * 
      */
@@ -150,11 +158,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PlatformRole }
+     * Create an instance of {@link ArrayOfEnvironmentPermissionForRole }
      * 
      */
-    public PlatformRole createPlatformRole() {
-        return new PlatformRole();
+    public ArrayOfEnvironmentPermissionForRole createArrayOfEnvironmentPermissionForRole() {
+        return new ArrayOfEnvironmentPermissionForRole();
     }
 
     /**
@@ -171,14 +179,6 @@ public class ObjectFactory {
      */
     public RoleCreateOrUpdate createRoleCreateOrUpdate() {
         return new RoleCreateOrUpdate();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfEnvironmentPermissionForRole }
-     * 
-     */
-    public ArrayOfEnvironmentPermissionForRole createArrayOfEnvironmentPermissionForRole() {
-        return new ArrayOfEnvironmentPermissionForRole();
     }
 
     /**

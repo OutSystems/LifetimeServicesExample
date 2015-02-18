@@ -45,10 +45,10 @@ public interface RoleManagementServiceSoap {
         String environmentKey,
         @WebParam(name = "NewPermissionLevelId", targetNamespace = "http://www.outsystems.com")
         int newPermissionLevelId,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Deletes a platform role that already exists. Since the platform requires IT users to have a single platform role, you need to specify a new platform role to grant to the users that are currently set with the role you want to delete.
@@ -71,12 +71,12 @@ public interface RoleManagementServiceSoap {
         String roleName,
         @WebParam(name = "UsersNewRoleName", targetNamespace = "http://www.outsystems.com")
         String usersNewRoleName,
-        @WebParam(name = "AffectedPlatformUsers", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfPlatformUser> affectedPlatformUsers,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "AffectedPlatformUsers", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfPlatformUser> affectedPlatformUsers);
 
     /**
      * Updates the name of a platform role.
@@ -97,10 +97,10 @@ public interface RoleManagementServiceSoap {
         String oldRoleName,
         @WebParam(name = "NewRoleName", targetNamespace = "http://www.outsystems.com")
         String newRoleName,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Creates a new platform role or updates a platform role that already exists.
@@ -125,12 +125,12 @@ public interface RoleManagementServiceSoap {
         boolean canConfigureInfrastructure,
         @WebParam(name = "RoleDescription", targetNamespace = "http://www.outsystems.com")
         String roleDescription,
-        @WebParam(name = "PlatformRole", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<PlatformRole> platformRole,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "PlatformRole", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<PlatformRole> platformRole);
 
     /**
      * Returns all platform roles with their information.
@@ -146,12 +146,12 @@ public interface RoleManagementServiceSoap {
     public void roleList(
         @WebParam(name = "Authentication", targetNamespace = "http://www.outsystems.com")
         WebServiceSimpleAuthentication authentication,
-        @WebParam(name = "PlatformRoles", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfPlatformRole> platformRoles,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "PlatformRoles", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfPlatformRole> platformRoles);
 
     /**
      * Returns the list of permissions a platform role has in the environments registered in the platform.
@@ -170,11 +170,11 @@ public interface RoleManagementServiceSoap {
         WebServiceSimpleAuthentication authentication,
         @WebParam(name = "RoleName", targetNamespace = "http://www.outsystems.com")
         String roleName,
-        @WebParam(name = "PlatformRolePermissions", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfEnvironmentPermissionForRole> platformRolePermissions,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "PlatformRolePermissions", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfEnvironmentPermissionForRole> platformRolePermissions);
 
 }

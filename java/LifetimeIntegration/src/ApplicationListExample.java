@@ -1,4 +1,5 @@
 import javax.xml.ws.Holder;
+
 import lifetime.applications.*;
  
 public class ApplicationListExample {
@@ -19,11 +20,12 @@ public class ApplicationListExample {
 		
 		// Objects to store the values returned
 		Holder<ArrayOfApplicationInfo> applicationList = new Holder<ArrayOfApplicationInfo>();
-		Holder<APIStatus> status = new Holder<APIStatus>();
 		Holder<Boolean> success = new Holder<Boolean>();
+		Holder<APIStatus> status = new Holder<APIStatus>();
+
 		
 		// Invoke the Application_List web method
-		service.getApplicationManagementServiceSoap().applicationList(authentication, applicationList, status);
+		service.getApplicationManagementServiceSoap().applicationList(authentication, success, status, applicationList);
 		
 		//if (success.value) {
 			for (ApplicationInfo application : applicationList.value.getApplicationInfo()) {

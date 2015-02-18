@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PlatformUser" type="{http://www.outsystems.com}PlatformUser" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="PlatformUser" type="{http://www.outsystems.com}PlatformUser" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "platformUser",
+    "success",
     "status",
-    "success"
+    "platformUser"
 })
 @XmlRootElement(name = "User_CreateOrUpdateResponse")
 public class UserCreateOrUpdateResponse {
 
-    @XmlElement(name = "PlatformUser")
-    protected PlatformUser platformUser;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "PlatformUser")
+    protected PlatformUser platformUser;
 
     /**
-     * Gets the value of the platformUser property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link PlatformUser }
-     *     
      */
-    public PlatformUser getPlatformUser() {
-        return platformUser;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the platformUser property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link PlatformUser }
-     *     
      */
-    public void setPlatformUser(PlatformUser value) {
-        this.platformUser = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class UserCreateOrUpdateResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the platformUser property.
      * 
+     * @return
+     *     possible object is
+     *     {@link PlatformUser }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public PlatformUser getPlatformUser() {
+        return platformUser;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the platformUser property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link PlatformUser }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setPlatformUser(PlatformUser value) {
+        this.platformUser = value;
     }
 
 }

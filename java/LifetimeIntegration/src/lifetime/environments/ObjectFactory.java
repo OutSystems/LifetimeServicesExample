@@ -30,27 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfEnvironmentInfo }
-     * 
-     */
-    public ArrayOfEnvironmentInfo createArrayOfEnvironmentInfo() {
-        return new ArrayOfEnvironmentInfo();
-    }
-
-    /**
      * Create an instance of {@link EnvironmentPermissionLevelListResponse }
      * 
      */
     public EnvironmentPermissionLevelListResponse createEnvironmentPermissionLevelListResponse() {
         return new EnvironmentPermissionLevelListResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfEnvironmentPermissionLevel }
-     * 
-     */
-    public ArrayOfEnvironmentPermissionLevel createArrayOfEnvironmentPermissionLevel() {
-        return new ArrayOfEnvironmentPermissionLevel();
     }
 
     /**
@@ -62,6 +46,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfEnvironmentPermissionLevel }
+     * 
+     */
+    public ArrayOfEnvironmentPermissionLevel createArrayOfEnvironmentPermissionLevel() {
+        return new ArrayOfEnvironmentPermissionLevel();
+    }
+
+    /**
      * Create an instance of {@link EnvironmentInfo }
      * 
      */
@@ -70,19 +62,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link APIStatus }
-     * 
-     */
-    public APIStatus createAPIStatus() {
-        return new APIStatus();
-    }
-
-    /**
      * Create an instance of {@link EnvironmentPermissionLevelList }
      * 
      */
     public EnvironmentPermissionLevelList createEnvironmentPermissionLevelList() {
         return new EnvironmentPermissionLevelList();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfEnvironmentInfo }
+     * 
+     */
+    public ArrayOfEnvironmentInfo createArrayOfEnvironmentInfo() {
+        return new ArrayOfEnvironmentInfo();
+    }
+
+    /**
+     * Create an instance of {@link APIStatus }
+     * 
+     */
+    public APIStatus createAPIStatus() {
+        return new APIStatus();
     }
 
     /**

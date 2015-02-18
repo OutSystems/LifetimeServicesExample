@@ -22,7 +22,7 @@ public class UserListExample {
 		Holder<Boolean> success = new Holder<Boolean>();
 		
 		// Invoke the User_List web method, to only display active users
-		service.getUserManagementServiceSoap().userList(authentication, false, users, status, success);
+		service.getUserManagementServiceSoap().userList(authentication, false, success, status, users);
 		
 		// If the call was successful, print information about the users
 		if (success.value) {

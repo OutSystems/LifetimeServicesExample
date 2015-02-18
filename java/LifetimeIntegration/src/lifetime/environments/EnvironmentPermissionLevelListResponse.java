@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="RolePermissionLevels" type="{http://www.outsystems.com}ArrayOfEnvironmentPermissionLevel" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="RolePermissionLevels" type="{http://www.outsystems.com}ArrayOfEnvironmentPermissionLevel" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "rolePermissionLevels",
+    "success",
     "status",
-    "success"
+    "rolePermissionLevels"
 })
 @XmlRootElement(name = "EnvironmentPermissionLevel_ListResponse")
 public class EnvironmentPermissionLevelListResponse {
 
-    @XmlElement(name = "RolePermissionLevels")
-    protected ArrayOfEnvironmentPermissionLevel rolePermissionLevels;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "RolePermissionLevels")
+    protected ArrayOfEnvironmentPermissionLevel rolePermissionLevels;
 
     /**
-     * Gets the value of the rolePermissionLevels property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfEnvironmentPermissionLevel }
-     *     
      */
-    public ArrayOfEnvironmentPermissionLevel getRolePermissionLevels() {
-        return rolePermissionLevels;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the rolePermissionLevels property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfEnvironmentPermissionLevel }
-     *     
      */
-    public void setRolePermissionLevels(ArrayOfEnvironmentPermissionLevel value) {
-        this.rolePermissionLevels = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class EnvironmentPermissionLevelListResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the rolePermissionLevels property.
      * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfEnvironmentPermissionLevel }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public ArrayOfEnvironmentPermissionLevel getRolePermissionLevels() {
+        return rolePermissionLevels;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the rolePermissionLevels property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfEnvironmentPermissionLevel }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setRolePermissionLevels(ArrayOfEnvironmentPermissionLevel value) {
+        this.rolePermissionLevels = value;
     }
 
 }

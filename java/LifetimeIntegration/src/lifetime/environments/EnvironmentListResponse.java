@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="Environments" type="{http://www.outsystems.com}ArrayOfEnvironmentInfo" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="Environments" type="{http://www.outsystems.com}ArrayOfEnvironmentInfo" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "environments",
+    "success",
     "status",
-    "success"
+    "environments"
 })
 @XmlRootElement(name = "Environment_ListResponse")
 public class EnvironmentListResponse {
 
-    @XmlElement(name = "Environments")
-    protected ArrayOfEnvironmentInfo environments;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "Environments")
+    protected ArrayOfEnvironmentInfo environments;
 
     /**
-     * Gets the value of the environments property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfEnvironmentInfo }
-     *     
      */
-    public ArrayOfEnvironmentInfo getEnvironments() {
-        return environments;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the environments property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfEnvironmentInfo }
-     *     
      */
-    public void setEnvironments(ArrayOfEnvironmentInfo value) {
-        this.environments = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class EnvironmentListResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the environments property.
      * 
+     * @return
+     *     possible object is
+     *     {@link ArrayOfEnvironmentInfo }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public ArrayOfEnvironmentInfo getEnvironments() {
+        return environments;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the environments property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayOfEnvironmentInfo }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setEnvironments(ArrayOfEnvironmentInfo value) {
+        this.environments = value;
     }
 
 }

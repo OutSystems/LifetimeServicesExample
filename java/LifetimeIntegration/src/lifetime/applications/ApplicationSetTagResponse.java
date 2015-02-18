@@ -1,5 +1,5 @@
 
-package lifetime.roles;
+package lifetime.applications;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
- *         &lt;element name="AffectedPlatformUsers" type="{http://www.outsystems.com}ArrayOfPlatformUser" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,18 +31,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "success",
-    "status",
-    "affectedPlatformUsers"
+    "status"
 })
-@XmlRootElement(name = "Role_DeleteResponse")
-public class RoleDeleteResponse {
+@XmlRootElement(name = "Application_SetTagResponse")
+public class ApplicationSetTagResponse {
 
     @XmlElement(name = "Success")
     protected boolean success;
     @XmlElement(name = "Status")
     protected APIStatus status;
-    @XmlElement(name = "AffectedPlatformUsers")
-    protected ArrayOfPlatformUser affectedPlatformUsers;
 
     /**
      * Gets the value of the success property.
@@ -83,30 +79,6 @@ public class RoleDeleteResponse {
      */
     public void setStatus(APIStatus value) {
         this.status = value;
-    }
-
-    /**
-     * Gets the value of the affectedPlatformUsers property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ArrayOfPlatformUser }
-     *     
-     */
-    public ArrayOfPlatformUser getAffectedPlatformUsers() {
-        return affectedPlatformUsers;
-    }
-
-    /**
-     * Sets the value of the affectedPlatformUsers property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ArrayOfPlatformUser }
-     *     
-     */
-    public void setAffectedPlatformUsers(ArrayOfPlatformUser value) {
-        this.affectedPlatformUsers = value;
     }
 
 }

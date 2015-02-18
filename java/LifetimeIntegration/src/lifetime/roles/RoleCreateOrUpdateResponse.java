@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="PlatformRole" type="{http://www.outsystems.com}PlatformRole" minOccurs="0"/>
- *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
  *         &lt;element name="Success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="Status" type="{http://www.outsystems.com}APIStatus" minOccurs="0"/>
+ *         &lt;element name="PlatformRole" type="{http://www.outsystems.com}PlatformRole" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,42 +31,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "platformRole",
+    "success",
     "status",
-    "success"
+    "platformRole"
 })
 @XmlRootElement(name = "Role_CreateOrUpdateResponse")
 public class RoleCreateOrUpdateResponse {
 
-    @XmlElement(name = "PlatformRole")
-    protected PlatformRole platformRole;
-    @XmlElement(name = "Status")
-    protected APIStatus status;
     @XmlElement(name = "Success")
     protected boolean success;
+    @XmlElement(name = "Status")
+    protected APIStatus status;
+    @XmlElement(name = "PlatformRole")
+    protected PlatformRole platformRole;
 
     /**
-     * Gets the value of the platformRole property.
+     * Gets the value of the success property.
      * 
-     * @return
-     *     possible object is
-     *     {@link PlatformRole }
-     *     
      */
-    public PlatformRole getPlatformRole() {
-        return platformRole;
+    public boolean isSuccess() {
+        return success;
     }
 
     /**
-     * Sets the value of the platformRole property.
+     * Sets the value of the success property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link PlatformRole }
-     *     
      */
-    public void setPlatformRole(PlatformRole value) {
-        this.platformRole = value;
+    public void setSuccess(boolean value) {
+        this.success = value;
     }
 
     /**
@@ -94,19 +86,27 @@ public class RoleCreateOrUpdateResponse {
     }
 
     /**
-     * Gets the value of the success property.
+     * Gets the value of the platformRole property.
      * 
+     * @return
+     *     possible object is
+     *     {@link PlatformRole }
+     *     
      */
-    public boolean isSuccess() {
-        return success;
+    public PlatformRole getPlatformRole() {
+        return platformRole;
     }
 
     /**
-     * Sets the value of the success property.
+     * Sets the value of the platformRole property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link PlatformRole }
+     *     
      */
-    public void setSuccess(boolean value) {
-        this.success = value;
+    public void setPlatformRole(PlatformRole value) {
+        this.platformRole = value;
     }
 
 }

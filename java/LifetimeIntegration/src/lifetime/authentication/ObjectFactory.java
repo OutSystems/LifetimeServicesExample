@@ -30,51 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfApplicationInfo }
+     * Create an instance of {@link AuthenticationGetTokenResponse }
      * 
      */
-    public ArrayOfApplicationInfo createArrayOfApplicationInfo() {
-        return new ArrayOfApplicationInfo();
+    public AuthenticationGetTokenResponse createAuthenticationGetTokenResponse() {
+        return new AuthenticationGetTokenResponse();
     }
 
     /**
-     * Create an instance of {@link ApplicationList }
+     * Create an instance of {@link AuthenticationGetToken }
      * 
      */
-    public ApplicationList createApplicationList() {
-        return new ApplicationList();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfEnvironmentApplicationInfo }
-     * 
-     */
-    public ArrayOfEnvironmentApplicationInfo createArrayOfEnvironmentApplicationInfo() {
-        return new ArrayOfEnvironmentApplicationInfo();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationListResponse }
-     * 
-     */
-    public ApplicationListResponse createApplicationListResponse() {
-        return new ApplicationListResponse();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationPermissionLevelListResponse }
-     * 
-     */
-    public ApplicationPermissionLevelListResponse createApplicationPermissionLevelListResponse() {
-        return new ApplicationPermissionLevelListResponse();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationSetTagBulk }
-     * 
-     */
-    public ApplicationSetTagBulk createApplicationSetTagBulk() {
-        return new ApplicationSetTagBulk();
+    public AuthenticationGetToken createAuthenticationGetToken() {
+        return new AuthenticationGetToken();
     }
 
     /**
@@ -83,102 +51,6 @@ public class ObjectFactory {
      */
     public APIStatus createAPIStatus() {
         return new APIStatus();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationPermissionLevelList }
-     * 
-     */
-    public ApplicationPermissionLevelList createApplicationPermissionLevelList() {
-        return new ApplicationPermissionLevelList();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfApplicationPermissionLevel }
-     * 
-     */
-    public ArrayOfApplicationPermissionLevel createArrayOfApplicationPermissionLevel() {
-        return new ArrayOfApplicationPermissionLevel();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationSetTagBulkResponse }
-     * 
-     */
-    public ApplicationSetTagBulkResponse createApplicationSetTagBulkResponse() {
-        return new ApplicationSetTagBulkResponse();
-    }
-
-    /**
-     * Create an instance of {@link SolutionPackAndDownload }
-     * 
-     */
-    public SolutionPackAndDownload createSolutionPackAndDownload() {
-        return new SolutionPackAndDownload();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfApplicationTag }
-     * 
-     */
-    public ArrayOfApplicationTag createArrayOfApplicationTag() {
-        return new ArrayOfApplicationTag();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationTag }
-     * 
-     */
-    public ApplicationTag createApplicationTag() {
-        return new ApplicationTag();
-    }
-
-    /**
-     * Create an instance of {@link EnvironmentApplicationTagList }
-     * 
-     */
-    public EnvironmentApplicationTagList createEnvironmentApplicationTagList() {
-        return new EnvironmentApplicationTagList();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationInfo }
-     * 
-     */
-    public ApplicationInfo createApplicationInfo() {
-        return new ApplicationInfo();
-    }
-
-    /**
-     * Create an instance of {@link EnvironmentApplicationInfo }
-     * 
-     */
-    public EnvironmentApplicationInfo createEnvironmentApplicationInfo() {
-        return new EnvironmentApplicationInfo();
-    }
-
-    /**
-     * Create an instance of {@link ApplicationPermissionLevel }
-     * 
-     */
-    public ApplicationPermissionLevel createApplicationPermissionLevel() {
-        return new ApplicationPermissionLevel();
-    }
-
-    /**
-     * Create an instance of {@link WebServiceSimpleAuthentication }
-     * 
-     */
-    public WebServiceSimpleAuthentication createWebServiceSimpleAuthentication() {
-        return new WebServiceSimpleAuthentication();
-    }
-
-    /**
-     * Create an instance of {@link SolutionPackAndDownloadResponse }
-     * 
-     */
-    public SolutionPackAndDownloadResponse createSolutionPackAndDownloadResponse() {
-        return new SolutionPackAndDownloadResponse();
     }
 
 }

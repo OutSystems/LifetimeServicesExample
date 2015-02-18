@@ -22,7 +22,7 @@ public class RoleListExample {
 		Holder<Boolean> success = new Holder<Boolean>();
 		
 		// Invoke the Role_List web method, to only display active users
-		service.getRoleManagementServiceSoap().roleList(authentication, roles, status, success);
+		service.getRoleManagementServiceSoap().roleList(authentication, success, status, roles);
 		
 		// If the call was successful, print information about the roles
 		if (success.value) {

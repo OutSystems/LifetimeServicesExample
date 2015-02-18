@@ -45,10 +45,10 @@ public interface UserManagementServiceSoap {
         String newPassword,
         @WebParam(name = "EncryptPassword", targetNamespace = "http://www.outsystems.com")
         boolean encryptPassword,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Deletes the permission a platform user has for a specific application. After executing this operation, the user permissions for the application are defined by the platform roles the platform user has.
@@ -69,10 +69,10 @@ public interface UserManagementServiceSoap {
         String username,
         @WebParam(name = "ApplicationKey", targetNamespace = "http://www.outsystems.com")
         String applicationKey,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Returns the permissions a platform user has over each existing application and the permissions of her platform role, in each environment of the infrastructure.
@@ -92,14 +92,14 @@ public interface UserManagementServiceSoap {
         WebServiceSimpleAuthentication authentication,
         @WebParam(name = "Username", targetNamespace = "http://www.outsystems.com")
         String username,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status,
         @WebParam(name = "ApplicationPermissions", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<ArrayOfWORCApplicationShortInfoApplicationPermissionsRecord> applicationPermissions,
         @WebParam(name = "PlatformRolePermissions", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ApplicationPermissions> platformRolePermissions,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<ApplicationPermissions> platformRolePermissions);
 
     /**
      * [DEPRECATED] Use User_SetApplicationRole. Updates the permission a platform user has for an application running on a given environment.
@@ -126,10 +126,10 @@ public interface UserManagementServiceSoap {
         String environmentKey,
         @WebParam(name = "PermissionLevelId", targetNamespace = "http://www.outsystems.com")
         int permissionLevelId,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Updates the role a platform user has for an application with the given key.
@@ -153,10 +153,10 @@ public interface UserManagementServiceSoap {
         String applicationKey,
         @WebParam(name = "RoleName", targetNamespace = "http://www.outsystems.com")
         String roleName,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Deactivates a user in the platform. The user stops having access to all operations that require authentication.
@@ -174,10 +174,10 @@ public interface UserManagementServiceSoap {
         WebServiceSimpleAuthentication authentication,
         @WebParam(name = "Username", targetNamespace = "http://www.outsystems.com")
         String username,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Returns the permissions a platform user has over an application, in each environment of the infrastructure, or the permissions from her platform role in case of specific permissions for the application were not specified.
@@ -200,14 +200,14 @@ public interface UserManagementServiceSoap {
         String username,
         @WebParam(name = "ApplicationKey", targetNamespace = "http://www.outsystems.com")
         String applicationKey,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status,
         @WebParam(name = "ArePlatformRolePermissions", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<Boolean> arePlatformRolePermissions,
         @WebParam(name = "ApplicationPermissions", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ApplicationPermissions> applicationPermissions,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<ApplicationPermissions> applicationPermissions);
 
     /**
      * Activates a user in the platform, restoring all permissions the platform user has associated.
@@ -225,10 +225,10 @@ public interface UserManagementServiceSoap {
         WebServiceSimpleAuthentication authentication,
         @WebParam(name = "Username", targetNamespace = "http://www.outsystems.com")
         String username,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Create a new platform user or updates a platform user that already exists.
@@ -262,12 +262,12 @@ public interface UserManagementServiceSoap {
         String email,
         @WebParam(name = "RoleName", targetNamespace = "http://www.outsystems.com")
         String roleName,
-        @WebParam(name = "PlatformUser", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<PlatformUser> platformUser,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "PlatformUser", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<PlatformUser> platformUser);
 
     /**
      * Changes the username of a platform user.
@@ -288,10 +288,10 @@ public interface UserManagementServiceSoap {
         String oldUsername,
         @WebParam(name = "NewUsername", targetNamespace = "http://www.outsystems.com")
         String newUsername,
-        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<APIStatus> status,
         @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        Holder<Boolean> success,
+        @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<APIStatus> status);
 
     /**
      * Returns the list of platform users, with their information, such as username, email and platform role.
@@ -310,11 +310,11 @@ public interface UserManagementServiceSoap {
         WebServiceSimpleAuthentication authentication,
         @WebParam(name = "ShowInactive", targetNamespace = "http://www.outsystems.com")
         boolean showInactive,
-        @WebParam(name = "PlatformUsers", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<ArrayOfPlatformUser> platformUsers,
+        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<Boolean> success,
         @WebParam(name = "Status", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
         Holder<APIStatus> status,
-        @WebParam(name = "Success", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
-        Holder<Boolean> success);
+        @WebParam(name = "PlatformUsers", targetNamespace = "http://www.outsystems.com", mode = WebParam.Mode.OUT)
+        Holder<ArrayOfPlatformUser> platformUsers);
 
 }
