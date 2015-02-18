@@ -27,13 +27,14 @@ namespace LifetimeIntegration {
             users = service.User_List(authentication, false, out status, out success);
 
 
-            //If the call was successfull, print information about the users
+            //If the call was successful, print information about the users
             if (success) {
                 foreach (PlatformUser user in users) {
                     Console.WriteLine(String.Format("{0} ({1}) has the {2} role", user.Name, user.Username, user.RoleName));
                 }
             } else {
-                //Implement error handling. See the possible error codes in the APIStatus structure documentation
+                // Implement error handling by checking the status.ResponseId field
+                // See the possible error codes in the APIStatus structure documentation
             }
         }
     }

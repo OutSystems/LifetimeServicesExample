@@ -22,17 +22,18 @@ namespace LifetimeIntegration {
             bool success = false;
             APIStatus status = null;
 
-            //Invoke the Role_GetPermissions web method
+            //Invoke the Role_GetPermissions web method for the Developer role
             EnvironmentPermissionForRole[] permissions = service.Role_GetPermissions(authentication, "Developer",
                                                                                     out status, out success);
 
-            //If the call was successfull, print information about the role
+            //If the call was successful, print information about the role
             if (success) {
                 foreach (EnvironmentPermissionForRole permission in permissions) {
                     Console.WriteLine(String.Format("{0,-20}{1}", permission.EnvironmentName, permission.EnvironmentPermissionLevelId));
                 }
             } else {
-                //Implement error handling. See the possible error codes in the APIStatus structure documentation
+                // Implement error handling by checking the status.ResponseId field
+                // See the possible error codes in the APIStatus structure documentation
             }
         }
     }

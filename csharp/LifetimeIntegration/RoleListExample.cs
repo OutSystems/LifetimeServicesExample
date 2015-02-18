@@ -25,13 +25,14 @@ namespace LifetimeIntegration {
             //Invoke the Role_List web method
             PlatformRole[] roles = service.Role_List(authentication, out status, out success);
 
-            //If the call was successfull, print information about the role
+            //If the call was successful, print information about the role
             if (success) {
                 foreach (PlatformRole role in roles) {
                     Console.WriteLine(String.Format("{0,-20}{1}", role.Name, role.Description));
                 }
             } else {
-                //Implement error handling. See the possible error codes in the APIStatus structure documentation
+                // Implement error handling by checking the status.ResponseId field
+                // See the possible error codes in the APIStatus structure documentation
             }
         }
     }

@@ -25,7 +25,7 @@ namespace LifetimeIntegration {
             //Invoke the Environment_List web method
             EnvironmentInfo[] environments = service.Environment_List(authentication, out status, out success);
 
-            //If the call was successfull, print information about the environments
+            //If the call was successful, print information about the environments
             if (success) {
                 foreach (EnvironmentInfo environment in environments) {
                     Console.WriteLine(String.Format("{0}: {1} front-end(s) running on {2} with {3}",
@@ -34,7 +34,8 @@ namespace LifetimeIntegration {
                                                     environment.DatabaseProvider));
                 }
             } else {
-                //Implement error handling. See the possible error codes in the APIStatus structure documentation
+                // Implement error handling by checking the status.ResponseId field
+                // See the possible error codes in the APIStatus structure documentation
             }
         }
     }

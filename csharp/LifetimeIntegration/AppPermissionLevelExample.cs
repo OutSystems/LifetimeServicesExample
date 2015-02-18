@@ -26,10 +26,10 @@ namespace LifetimeIntegration {
             ApplicationPermissionLevel[] permissionLevels = service.ApplicationPermissionLevel_List(authentication,out status, out success);
             
 
-            // If the call was successfull, print the permission levels available
+            // If the call was successful, print the permission levels available
             if (success) {
                 foreach (ApplicationPermissionLevel permission in permissionLevels) {
-                    Console.WriteLine(String.Format("{0,-30}", permission.ShortLabel));
+                    Console.WriteLine(String.Format("{0}", permission.ShortLabel));
                 }
             } else {
                 // Implement error handling by checking the status.ResponseId field

@@ -4,6 +4,7 @@ using LifetimeIntegration.LifetimeAuthentication;
 namespace LifetimeIntegration {
     class AuthenticationExample {
         
+        // Get a session token to avoid sending the credentials on every request
         public static String getToken() {
                         
             // LifeTime credentials used to obtain a session token
@@ -22,15 +23,14 @@ namespace LifetimeIntegration {
             // WS returns a boolean and status code to signal success
             string token = service.Authentication_GetToken(username, password, out status, out success);
 
-            // If the call was successfull, print the session token obtained
+            // If the call was successful, print the session token obtained
             if (success) {
-                // Console.Write(String.Format("Token obtained: {0}", token));
-                return token;
+                Console.Write(String.Format("Token obtained: {0}", token));
             } else {
                 // Implement error handling by checking the status.ResponseId field
                 // See the possible error codes in the APIStatus structure documentation
             }
-            return "";
+            return token;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace LifetimeIntegration {
             // WS returns a boolean and status code to signal success
             ApplicationInfo[] applicationList = service.Application_List(authentication, out status, out success);
 
-            // If the call was successfull, print the applications and their versions
+            // If the call was successful, print the applications and their versions
             if (success) {
                 foreach (ApplicationInfo application in applicationList) {
                     Console.Write(String.Format("\n{0,-30}", application.Name));

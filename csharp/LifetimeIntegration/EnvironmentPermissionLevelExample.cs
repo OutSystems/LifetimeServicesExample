@@ -25,13 +25,14 @@ namespace LifetimeIntegration {
             //Invoke the EnvironmentPermissionLevel_List web method
             EnvironmentPermissionLevel[] permissionLevels = service.EnvironmentPermissionLevel_List(authentication, out status, out success);
 
-            //If the call was successfull, print the permission levels available
+            //If the call was successful, print the permission levels available
             if (success) {
                 foreach (EnvironmentPermissionLevel permission in permissionLevels) {
-                    Console.WriteLine(String.Format("{0,-30}", permission.ShortLabel));
+                    Console.WriteLine(String.Format("{0}", permission.ShortLabel));
                 }
             } else {
-                //Implement error handling. See the possible error codes in the APIStatus structure documentation
+                // Implement error handling by checking the status.ResponseId field
+                // See the possible error codes in the APIStatus structure documentation
             }
         }
     }

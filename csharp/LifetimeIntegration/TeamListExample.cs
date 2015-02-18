@@ -26,13 +26,14 @@ namespace LifetimeIntegration {
             Platform_Team[] teams = null;
             status = service.Team_List(authentication, out teams, out success);
 
-            //If the call was successfull, print information about the role
+            //If the call was successful, print information about the role
             if (success) {
                 foreach (Platform_Team team in teams) {
                     Console.WriteLine(String.Format("{0}", team.Name));
                 }
             } else {
-                //Implement error handling. See the possible error codes in the APIStatus structure documentation
+                // Implement error handling by checking the status.ResponseId field
+                // See the possible error codes in the APIStatus structure documentation
             }
         }
     }
