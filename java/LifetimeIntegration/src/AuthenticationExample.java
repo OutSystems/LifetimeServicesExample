@@ -23,12 +23,12 @@ public class AuthenticationExample {
         AuthenticationService service = new AuthenticationService();
         service.getAuthenticationServiceSoap().authenticationGetToken(username, password, success, status, token);
         
-//        if(success.value) {
-//        	System.out.println(String.format("Token obtained %s", token.value));
-//        } else {
-//			// Implement error handling. 
-//			/// See the possible error codes in the APIStatus structure documentation
-//		}
+        if(success.value) {
+        	// System.out.println(String.format("Token obtained %s", token.value));
+        } else {
+			// Implement error handling. 
+			// See the possible error codes in the APIStatus structure documentation
+		}
         return token.value;
 	}
 }

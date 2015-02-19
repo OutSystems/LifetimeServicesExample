@@ -27,7 +27,7 @@ public class ApplicationListExample {
 		// Invoke the Application_List web method
 		service.getApplicationManagementServiceSoap().applicationList(authentication, success, status, applicationList);
 		
-		//if (success.value) {
+		if (success.value) {
 			for (ApplicationInfo application : applicationList.value.getApplicationInfo()) {
 				//For each application
 				System.out.print(String.format("\n%-30s", application.getName()));
@@ -36,10 +36,10 @@ public class ApplicationListExample {
 							applicationInEnvironment.isExistsInEnvironment() ? applicationInEnvironment.getVersion() : "-"));
 				}
 			}
-		//} else {
+		} else {
             // Implement error handling by checking the status.value.ResponseId field
 			// See the possible error codes in the APIStatus structure documentation
-		//}
+		}
 	}
 }
 	
