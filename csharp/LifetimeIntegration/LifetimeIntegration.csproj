@@ -158,9 +158,6 @@
     <None Include="Web References\LifetimeTeams\PlatformTeam.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\LifetimeTeams\Platform_Team.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
     <None Include="Web References\LifetimeTeams\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
