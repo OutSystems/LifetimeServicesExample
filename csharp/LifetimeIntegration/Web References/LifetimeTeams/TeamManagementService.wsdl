@@ -23,19 +23,12 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Team_CreateOrUpdateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeam" type="s0:Platform_Team" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeam" type="s0:PlatformTeam" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Platform_Team">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="TeamId" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="APIStatus">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
@@ -44,39 +37,6 @@ To use this API you need to send an authentication argument with username/passwo
           <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Team_Delete">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
-            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Team_DeleteResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
-            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Team_Details">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
-            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Team_DetailsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeam" type="s0:PlatformTeam" />
-            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:complexType name="PlatformTeam">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
@@ -112,6 +72,39 @@ To use this API you need to send an authentication argument with username/passwo
           <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="Team_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_GetDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
+            <s:element minOccurs="0" maxOccurs="1" name="TeamName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Team_GetDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeam" type="s0:PlatformTeam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Team_RemoveApplication">
         <s:complexType>
           <s:sequence>
@@ -124,8 +117,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Team_RemoveApplicationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -139,15 +132,15 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Team_ListResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeams" type="s0:ArrayOfPlatform_Team" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformTeams" type="s0:ArrayOfPlatformTeam" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfPlatform_Team">
+      <s:complexType name="ArrayOfPlatformTeam">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Platform_Team" nillable="true" type="s0:Platform_Team" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatformTeam" nillable="true" type="s0:PlatformTeam" />
         </s:sequence>
       </s:complexType>
       <s:element name="Team_AssignApplication">
@@ -162,8 +155,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Team_AssignApplicationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -179,8 +172,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Team_RemoveUserResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -197,8 +190,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Team_AddUserResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -216,11 +209,11 @@ To use this API you need to send an authentication argument with username/passwo
   <wsdl:message name="Team_DeleteSoapOut">
     <wsdl:part name="parameters" element="s0:Team_DeleteResponse" />
   </wsdl:message>
-  <wsdl:message name="Team_DetailsSoapIn">
-    <wsdl:part name="parameters" element="s0:Team_Details" />
+  <wsdl:message name="Team_GetDetailsSoapIn">
+    <wsdl:part name="parameters" element="s0:Team_GetDetails" />
   </wsdl:message>
-  <wsdl:message name="Team_DetailsSoapOut">
-    <wsdl:part name="parameters" element="s0:Team_DetailsResponse" />
+  <wsdl:message name="Team_GetDetailsSoapOut">
+    <wsdl:part name="parameters" element="s0:Team_GetDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="Team_RemoveApplicationSoapIn">
     <wsdl:part name="parameters" element="s0:Team_RemoveApplication" />
@@ -263,10 +256,10 @@ To use this API you need to send an authentication argument with username/passwo
       <wsdl:input message="tns:Team_DeleteSoapIn" />
       <wsdl:output message="tns:Team_DeleteSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Team_Details">
+    <wsdl:operation name="Team_GetDetails">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the details of a team, with its users and applications.</wsdl:documentation>
-      <wsdl:input message="tns:Team_DetailsSoapIn" />
-      <wsdl:output message="tns:Team_DetailsSoapOut" />
+      <wsdl:input message="tns:Team_GetDetailsSoapIn" />
+      <wsdl:output message="tns:Team_GetDetailsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Team_RemoveApplication">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes an application from a team.</wsdl:documentation>
@@ -314,8 +307,8 @@ To use this API you need to send an authentication argument with username/passwo
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Team_Details">
-      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_Details" style="document" />
+    <wsdl:operation name="Team_GetDetails">
+      <soap:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_GetDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -389,8 +382,8 @@ To use this API you need to send an authentication argument with username/passwo
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Team_Details">
-      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_Details" style="document" />
+    <wsdl:operation name="Team_GetDetails">
+      <soap12:operation soapAction="http://LifeTimeServices/TeamManagementService/Team_GetDetails" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

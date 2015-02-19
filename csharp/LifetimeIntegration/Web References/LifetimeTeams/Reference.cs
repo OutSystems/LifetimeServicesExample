@@ -33,7 +33,7 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         private System.Threading.SendOrPostCallback Team_DeleteOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Team_DetailsOperationCompleted;
+        private System.Threading.SendOrPostCallback Team_GetDetailsOperationCompleted;
         
         private System.Threading.SendOrPostCallback Team_RemoveApplicationOperationCompleted;
         
@@ -90,7 +90,7 @@ namespace LifetimeIntegration.LifetimeTeams {
         public event Team_DeleteCompletedEventHandler Team_DeleteCompleted;
         
         /// <remarks/>
-        public event Team_DetailsCompletedEventHandler Team_DetailsCompleted;
+        public event Team_GetDetailsCompletedEventHandler Team_GetDetailsCompleted;
         
         /// <remarks/>
         public event Team_RemoveApplicationCompletedEventHandler Team_RemoveApplicationCompleted;
@@ -109,15 +109,15 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_CreateOrUpdate", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("PlatformTeam")]
-        public Platform_Team Team_CreateOrUpdate(WebServiceSimpleAuthentication Authentication, string TeamName, string Description, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_CreateOrUpdate(WebServiceSimpleAuthentication Authentication, string TeamName, string Description, out APIStatus Status, out PlatformTeam PlatformTeam) {
             object[] results = this.Invoke("Team_CreateOrUpdate", new object[] {
                         Authentication,
                         TeamName,
                         Description});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((Platform_Team)(results[0]));
+            PlatformTeam = ((PlatformTeam)(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -145,13 +145,13 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_Delete", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_Delete(WebServiceSimpleAuthentication Authentication, string TeamName, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_Delete(WebServiceSimpleAuthentication Authentication, string TeamName, out APIStatus Status) {
             object[] results = this.Invoke("Team_Delete", new object[] {
                         Authentication,
                         TeamName});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -177,49 +177,49 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_Details", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_Details(WebServiceSimpleAuthentication Authentication, string TeamName, out PlatformTeam PlatformTeam, out bool Success) {
-            object[] results = this.Invoke("Team_Details", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_GetDetails", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_GetDetails(WebServiceSimpleAuthentication Authentication, string TeamName, out APIStatus Status, out PlatformTeam PlatformTeam) {
+            object[] results = this.Invoke("Team_GetDetails", new object[] {
                         Authentication,
                         TeamName});
-            PlatformTeam = ((PlatformTeam)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            PlatformTeam = ((PlatformTeam)(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Team_DetailsAsync(WebServiceSimpleAuthentication Authentication, string TeamName) {
-            this.Team_DetailsAsync(Authentication, TeamName, null);
+        public void Team_GetDetailsAsync(WebServiceSimpleAuthentication Authentication, string TeamName) {
+            this.Team_GetDetailsAsync(Authentication, TeamName, null);
         }
         
         /// <remarks/>
-        public void Team_DetailsAsync(WebServiceSimpleAuthentication Authentication, string TeamName, object userState) {
-            if ((this.Team_DetailsOperationCompleted == null)) {
-                this.Team_DetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTeam_DetailsOperationCompleted);
+        public void Team_GetDetailsAsync(WebServiceSimpleAuthentication Authentication, string TeamName, object userState) {
+            if ((this.Team_GetDetailsOperationCompleted == null)) {
+                this.Team_GetDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTeam_GetDetailsOperationCompleted);
             }
-            this.InvokeAsync("Team_Details", new object[] {
+            this.InvokeAsync("Team_GetDetails", new object[] {
                         Authentication,
-                        TeamName}, this.Team_DetailsOperationCompleted, userState);
+                        TeamName}, this.Team_GetDetailsOperationCompleted, userState);
         }
         
-        private void OnTeam_DetailsOperationCompleted(object arg) {
-            if ((this.Team_DetailsCompleted != null)) {
+        private void OnTeam_GetDetailsOperationCompleted(object arg) {
+            if ((this.Team_GetDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Team_DetailsCompleted(this, new Team_DetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Team_GetDetailsCompleted(this, new Team_GetDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_RemoveApplication", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_RemoveApplication(WebServiceSimpleAuthentication Authentication, string TeamName, string ApplicationKey, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_RemoveApplication(WebServiceSimpleAuthentication Authentication, string TeamName, string ApplicationKey, out APIStatus Status) {
             object[] results = this.Invoke("Team_RemoveApplication", new object[] {
                         Authentication,
                         TeamName,
                         ApplicationKey});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -247,13 +247,13 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_List", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_List(WebServiceSimpleAuthentication Authentication, out Platform_Team[] PlatformTeams, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out PlatformTeam[] PlatformTeams) {
             object[] results = this.Invoke("Team_List", new object[] {
                         Authentication});
-            PlatformTeams = ((Platform_Team[])(results[1]));
-            Success = ((bool)(results[2]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            PlatformTeams = ((PlatformTeam[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -279,14 +279,14 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_AssignApplication", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_AssignApplication(WebServiceSimpleAuthentication Authentication, string TeamName, string ApplicationKey, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_AssignApplication(WebServiceSimpleAuthentication Authentication, string TeamName, string ApplicationKey, out APIStatus Status) {
             object[] results = this.Invoke("Team_AssignApplication", new object[] {
                         Authentication,
                         TeamName,
                         ApplicationKey});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -314,14 +314,14 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_RemoveUser", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_RemoveUser(WebServiceSimpleAuthentication Authentication, string TeamName, string Username, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_RemoveUser(WebServiceSimpleAuthentication Authentication, string TeamName, string Username, out APIStatus Status) {
             object[] results = this.Invoke("Team_RemoveUser", new object[] {
                         Authentication,
                         TeamName,
                         Username});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -349,15 +349,15 @@ namespace LifetimeIntegration.LifetimeTeams {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/TeamManagementService/Team_AddUser", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Team_AddUser(WebServiceSimpleAuthentication Authentication, string TeamName, string Username, string RoleName, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Team_AddUser(WebServiceSimpleAuthentication Authentication, string TeamName, string Username, string RoleName, out APIStatus Status) {
             object[] results = this.Invoke("Team_AddUser", new object[] {
                         Authentication,
                         TeamName,
                         Username,
                         RoleName});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -689,51 +689,6 @@ namespace LifetimeIntegration.LifetimeTeams {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
-    public partial class Platform_Team {
-        
-        private int teamIdField;
-        
-        private string nameField;
-        
-        private string descriptionField;
-        
-        /// <remarks/>
-        public int TeamId {
-            get {
-                return this.teamIdField;
-            }
-            set {
-                this.teamIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
     public delegate void Team_CreateOrUpdateCompletedEventHandler(object sender, Team_CreateOrUpdateCompletedEventArgs e);
     
@@ -751,10 +706,10 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public Platform_Team Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((Platform_Team)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -767,10 +722,10 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformTeam PlatformTeam {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformTeam)(this.results[2]));
             }
         }
     }
@@ -793,44 +748,52 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
-    public delegate void Team_DetailsCompletedEventHandler(object sender, Team_DetailsCompletedEventArgs e);
+    public delegate void Team_GetDetailsCompletedEventHandler(object sender, Team_GetDetailsCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Team_DetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Team_GetDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Team_DetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Team_GetDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public APIStatus Status {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((APIStatus)(this.results[1]));
             }
         }
         
@@ -838,15 +801,7 @@ namespace LifetimeIntegration.LifetimeTeams {
         public PlatformTeam PlatformTeam {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((PlatformTeam)(this.results[1]));
-            }
-        }
-        
-        /// <remarks/>
-        public bool Success {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformTeam)(this.results[2]));
             }
         }
     }
@@ -869,18 +824,18 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -903,26 +858,26 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public Platform_Team[] PlatformTeams {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((Platform_Team[])(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformTeam[] PlatformTeams {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformTeam[])(this.results[2]));
             }
         }
     }
@@ -945,18 +900,18 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -979,18 +934,18 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -1013,18 +968,18 @@ namespace LifetimeIntegration.LifetimeTeams {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }

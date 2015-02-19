@@ -124,15 +124,15 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_ChangePassword", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_ChangePassword(WebServiceSimpleAuthentication Authentication, string Username, string NewPassword, bool EncryptPassword, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_ChangePassword(WebServiceSimpleAuthentication Authentication, string Username, string NewPassword, bool EncryptPassword, out APIStatus Status) {
             object[] results = this.Invoke("User_ChangePassword", new object[] {
                         Authentication,
                         Username,
                         NewPassword,
                         EncryptPassword});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -161,14 +161,14 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_DeleteApplicationPermission", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_DeleteApplicationPermission(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_DeleteApplicationPermission(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, out APIStatus Status) {
             object[] results = this.Invoke("User_DeleteApplicationPermission", new object[] {
                         Authentication,
                         Username,
                         ApplicationKey});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -196,15 +196,15 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_GetAllPermissions", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("ApplicationPermissions")]
-        public WORCApplicationShortInfoApplicationPermissionsRecord[] User_GetAllPermissions(WebServiceSimpleAuthentication Authentication, string Username, out ApplicationPermissions PlatformRolePermissions, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_GetAllPermissions(WebServiceSimpleAuthentication Authentication, string Username, out APIStatus Status, out WORCApplicationShortInfoApplicationPermissionsRecord[] ApplicationPermissions, out ApplicationPermissions PlatformRolePermissions) {
             object[] results = this.Invoke("User_GetAllPermissions", new object[] {
                         Authentication,
                         Username});
-            PlatformRolePermissions = ((ApplicationPermissions)(results[1]));
-            Status = ((APIStatus)(results[2]));
-            Success = ((bool)(results[3]));
-            return ((WORCApplicationShortInfoApplicationPermissionsRecord[])(results[0]));
+            Status = ((APIStatus)(results[1]));
+            ApplicationPermissions = ((WORCApplicationShortInfoApplicationPermissionsRecord[])(results[2]));
+            PlatformRolePermissions = ((ApplicationPermissions)(results[3]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -231,16 +231,16 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_UpdateApplicationPermission", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_UpdateApplicationPermission(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, string EnvironmentKey, int PermissionLevelId, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_UpdateApplicationPermission(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, string EnvironmentKey, int PermissionLevelId, out APIStatus Status) {
             object[] results = this.Invoke("User_UpdateApplicationPermission", new object[] {
                         Authentication,
                         Username,
                         ApplicationKey,
                         EnvironmentKey,
                         PermissionLevelId});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -270,15 +270,15 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_SetApplicationRole", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_SetApplicationRole(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, string RoleName, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_SetApplicationRole(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, string RoleName, out APIStatus Status) {
             object[] results = this.Invoke("User_SetApplicationRole", new object[] {
                         Authentication,
                         Username,
                         ApplicationKey,
                         RoleName});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -307,13 +307,13 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_SetInactive", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_SetInactive(WebServiceSimpleAuthentication Authentication, string Username, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_SetInactive(WebServiceSimpleAuthentication Authentication, string Username, out APIStatus Status) {
             object[] results = this.Invoke("User_SetInactive", new object[] {
                         Authentication,
                         Username});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -340,15 +340,15 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_GetApplicationPermissions", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("ArePlatformRolePermissions")]
-        public bool User_GetApplicationPermissions(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, out ApplicationPermissions ApplicationPermissions, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_GetApplicationPermissions(WebServiceSimpleAuthentication Authentication, string Username, string ApplicationKey, out APIStatus Status, out bool ArePlatformRolePermissions, out ApplicationPermissions ApplicationPermissions) {
             object[] results = this.Invoke("User_GetApplicationPermissions", new object[] {
                         Authentication,
                         Username,
                         ApplicationKey});
-            ApplicationPermissions = ((ApplicationPermissions)(results[1]));
-            Status = ((APIStatus)(results[2]));
-            Success = ((bool)(results[3]));
+            Status = ((APIStatus)(results[1]));
+            ArePlatformRolePermissions = ((bool)(results[2]));
+            ApplicationPermissions = ((ApplicationPermissions)(results[3]));
             return ((bool)(results[0]));
         }
         
@@ -377,13 +377,13 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_SetActive", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_SetActive(WebServiceSimpleAuthentication Authentication, string Username, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_SetActive(WebServiceSimpleAuthentication Authentication, string Username, out APIStatus Status) {
             object[] results = this.Invoke("User_SetActive", new object[] {
                         Authentication,
                         Username});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -410,8 +410,8 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_CreateOrUpdate", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("PlatformUser")]
-        public PlatformUser User_CreateOrUpdate(WebServiceSimpleAuthentication Authentication, string Username, string Password, bool EncryptPassword, string Name, string Email, string RoleName, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_CreateOrUpdate(WebServiceSimpleAuthentication Authentication, string Username, string Password, bool EncryptPassword, string Name, string Email, string RoleName, out APIStatus Status, out PlatformUser PlatformUser) {
             object[] results = this.Invoke("User_CreateOrUpdate", new object[] {
                         Authentication,
                         Username,
@@ -421,8 +421,8 @@ namespace LifetimeIntegration.LifetimeUsers {
                         Email,
                         RoleName});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((PlatformUser)(results[0]));
+            PlatformUser = ((PlatformUser)(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -454,14 +454,14 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_ChangeUsername", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus User_ChangeUsername(WebServiceSimpleAuthentication Authentication, string OldUsername, string NewUsername, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_ChangeUsername(WebServiceSimpleAuthentication Authentication, string OldUsername, string NewUsername, out APIStatus Status) {
             object[] results = this.Invoke("User_ChangeUsername", new object[] {
                         Authentication,
                         OldUsername,
                         NewUsername});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -489,14 +489,14 @@ namespace LifetimeIntegration.LifetimeUsers {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/UserManagementService/User_List", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("PlatformUsers")]
-        public PlatformUser[] User_List(WebServiceSimpleAuthentication Authentication, bool ShowInactive, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool User_List(WebServiceSimpleAuthentication Authentication, bool ShowInactive, out APIStatus Status, out PlatformUser[] PlatformUsers) {
             object[] results = this.Invoke("User_List", new object[] {
                         Authentication,
                         ShowInactive});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((PlatformUser[])(results[0]));
+            PlatformUsers = ((PlatformUser[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -898,18 +898,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -932,18 +932,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -966,18 +966,10 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public WORCApplicationShortInfoApplicationPermissionsRecord[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((WORCApplicationShortInfoApplicationPermissionsRecord[])(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public ApplicationPermissions PlatformRolePermissions {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ApplicationPermissions)(this.results[1]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -985,15 +977,23 @@ namespace LifetimeIntegration.LifetimeUsers {
         public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[2]));
+                return ((APIStatus)(this.results[1]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public WORCApplicationShortInfoApplicationPermissionsRecord[] ApplicationPermissions {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[3]));
+                return ((WORCApplicationShortInfoApplicationPermissionsRecord[])(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public ApplicationPermissions PlatformRolePermissions {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ApplicationPermissions)(this.results[3]));
             }
         }
     }
@@ -1016,18 +1016,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -1050,18 +1050,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -1084,18 +1084,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -1126,26 +1126,26 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public ApplicationPermissions ApplicationPermissions {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ApplicationPermissions)(this.results[1]));
-            }
-        }
-        
-        /// <remarks/>
         public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[2]));
+                return ((APIStatus)(this.results[1]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public bool ArePlatformRolePermissions {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[3]));
+                return ((bool)(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public ApplicationPermissions ApplicationPermissions {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ApplicationPermissions)(this.results[3]));
             }
         }
     }
@@ -1168,18 +1168,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -1202,10 +1202,10 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public PlatformUser Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((PlatformUser)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -1218,10 +1218,10 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformUser PlatformUser {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformUser)(this.results[2]));
             }
         }
     }
@@ -1244,18 +1244,18 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -1278,10 +1278,10 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public PlatformUser[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((PlatformUser[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -1294,10 +1294,10 @@ namespace LifetimeIntegration.LifetimeUsers {
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformUser[] PlatformUsers {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformUser[])(this.results[2]));
             }
         }
     }

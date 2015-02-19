@@ -21,10 +21,11 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            ApplicationInfo[] applicationList = null;
 
             // Invoke the Application_List web method
             // WS returns a boolean and status code to signal success
-            ApplicationInfo[] applicationList = service.Application_List(authentication, out status, out success);
+            success = service.Application_List(authentication, out status, out applicationList);
 
             // If the call was successful, print the applications and their versions
             if (success) {

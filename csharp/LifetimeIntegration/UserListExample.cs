@@ -21,10 +21,10 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            PlatformUser[] users = null;
 
             //Invoke the User_List web method, to only display active users
-            PlatformUser[] users = null;
-            users = service.User_List(authentication, false, out status, out success);
+            success = service.User_List(authentication, false, out status, out users);
 
 
             //If the call was successful, print information about the users

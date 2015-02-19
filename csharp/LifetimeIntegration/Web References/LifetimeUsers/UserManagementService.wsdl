@@ -24,8 +24,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_ChangePasswordResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -49,8 +49,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_DeleteApplicationPermissionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -65,10 +65,10 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_GetAllPermissionsResponse">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissions" type="s0:ArrayOfWORCApplicationShortInfoApplicationPermissionsRecord" />
             <s:element minOccurs="0" maxOccurs="1" name="PlatformRolePermissions" type="s0:ApplicationPermissions" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
-            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -123,8 +123,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_UpdateApplicationPermissionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -141,8 +141,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_SetApplicationRoleResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -157,8 +157,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_SetInactiveResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -174,10 +174,10 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_GetApplicationPermissionsResponse">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="ArePlatformRolePermissions" type="s:boolean" />
             <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissions" type="s0:ApplicationPermissions" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
-            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -192,8 +192,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_SetActiveResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -213,9 +213,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_CreateOrUpdateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformUser" type="s0:PlatformUser" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformUser" type="s0:PlatformUser" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -240,8 +240,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_ChangeUsernameResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -256,9 +256,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="User_ListResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformUsers" type="s0:ArrayOfPlatformUser" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformUsers" type="s0:ArrayOfPlatformUser" />
           </s:sequence>
         </s:complexType>
       </s:element>

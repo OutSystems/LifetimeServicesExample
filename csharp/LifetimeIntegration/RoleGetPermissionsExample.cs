@@ -21,10 +21,10 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            EnvironmentPermissionForRole[] permissions = null;
 
             //Invoke the Role_GetPermissions web method for the Developer role
-            EnvironmentPermissionForRole[] permissions = service.Role_GetPermissions(authentication, "Developer",
-                                                                                    out status, out success);
+            success = service.Role_GetPermissions(authentication, "Developer", out status, out permissions);
 
             //If the call was successful, print information about the role
             if (success) {

@@ -21,9 +21,10 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            EnvironmentPermissionLevel[] permissionLevels = null;
 
             //Invoke the EnvironmentPermissionLevel_List web method
-            EnvironmentPermissionLevel[] permissionLevels = service.EnvironmentPermissionLevel_List(authentication, out status, out success);
+            success = service.EnvironmentPermissionLevel_List(authentication, out status, out permissionLevels);
 
             //If the call was successful, print the permission levels available
             if (success) {

@@ -24,8 +24,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Role_UpdatePermissionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -49,9 +49,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Role_DeleteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AffectedPlatformUsers" type="s0:ArrayOfPlatformUser" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="AffectedPlatformUsers" type="s0:ArrayOfPlatformUser" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -81,8 +81,8 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Role_ChangeNameResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -99,9 +99,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Role_CreateOrUpdateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformRole" type="s0:PlatformRole" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRole" type="s0:PlatformRole" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -140,9 +140,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Role_ListResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformRoles" type="s0:ArrayOfPlatformRole" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRoles" type="s0:ArrayOfPlatformRole" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -162,9 +162,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Role_GetPermissionsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PlatformRolePermissions" type="s0:ArrayOfEnvironmentPermissionForRole" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="PlatformRolePermissions" type="s0:ArrayOfEnvironmentPermissionForRole" />
           </s:sequence>
         </s:complexType>
       </s:element>

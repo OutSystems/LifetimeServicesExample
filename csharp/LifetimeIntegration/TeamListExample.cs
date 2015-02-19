@@ -21,14 +21,14 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            PlatformTeam[] teams = null;
 
             //Invoke the Team_List web method
-            Platform_Team[] teams = null;
-            status = service.Team_List(authentication, out teams, out success);
+            success = service.Team_List(authentication, out status, out teams);
 
             //If the call was successful, print information about the role
             if (success) {
-                foreach (Platform_Team team in teams) {
+                foreach (PlatformTeam team in teams) {
                     Console.WriteLine(String.Format("{0}", team.Name));
                 }
             } else {

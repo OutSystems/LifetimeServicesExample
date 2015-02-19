@@ -99,15 +99,15 @@ namespace LifetimeIntegration.LifetimeRoles {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/RoleManagementService/Role_UpdatePermission", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Role_UpdatePermission(WebServiceSimpleAuthentication Authentication, string RoleName, string EnvironmentKey, int NewPermissionLevelId, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Role_UpdatePermission(WebServiceSimpleAuthentication Authentication, string RoleName, string EnvironmentKey, int NewPermissionLevelId, out APIStatus Status) {
             object[] results = this.Invoke("Role_UpdatePermission", new object[] {
                         Authentication,
                         RoleName,
                         EnvironmentKey,
                         NewPermissionLevelId});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -136,15 +136,15 @@ namespace LifetimeIntegration.LifetimeRoles {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/RoleManagementService/Role_Delete", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("AffectedPlatformUsers")]
-        public PlatformUser[] Role_Delete(WebServiceSimpleAuthentication Authentication, string RoleName, string UsersNewRoleName, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Role_Delete(WebServiceSimpleAuthentication Authentication, string RoleName, string UsersNewRoleName, out APIStatus Status, out PlatformUser[] AffectedPlatformUsers) {
             object[] results = this.Invoke("Role_Delete", new object[] {
                         Authentication,
                         RoleName,
                         UsersNewRoleName});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((PlatformUser[])(results[0]));
+            AffectedPlatformUsers = ((PlatformUser[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -172,14 +172,14 @@ namespace LifetimeIntegration.LifetimeRoles {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/RoleManagementService/Role_ChangeName", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Role_ChangeName(WebServiceSimpleAuthentication Authentication, string OldRoleName, string NewRoleName, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Role_ChangeName(WebServiceSimpleAuthentication Authentication, string OldRoleName, string NewRoleName, out APIStatus Status) {
             object[] results = this.Invoke("Role_ChangeName", new object[] {
                         Authentication,
                         OldRoleName,
                         NewRoleName});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -207,16 +207,16 @@ namespace LifetimeIntegration.LifetimeRoles {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/RoleManagementService/Role_CreateOrUpdate", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("PlatformRole")]
-        public PlatformRole Role_CreateOrUpdate(WebServiceSimpleAuthentication Authentication, string RoleName, bool CanConfigureInfrastructure, string RoleDescription, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Role_CreateOrUpdate(WebServiceSimpleAuthentication Authentication, string RoleName, bool CanConfigureInfrastructure, string RoleDescription, out APIStatus Status, out PlatformRole PlatformRole) {
             object[] results = this.Invoke("Role_CreateOrUpdate", new object[] {
                         Authentication,
                         RoleName,
                         CanConfigureInfrastructure,
                         RoleDescription});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((PlatformRole)(results[0]));
+            PlatformRole = ((PlatformRole)(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -245,13 +245,13 @@ namespace LifetimeIntegration.LifetimeRoles {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/RoleManagementService/Role_List", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("PlatformRoles")]
-        public PlatformRole[] Role_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Role_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out PlatformRole[] PlatformRoles) {
             object[] results = this.Invoke("Role_List", new object[] {
                         Authentication});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((PlatformRole[])(results[0]));
+            PlatformRoles = ((PlatformRole[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -277,14 +277,14 @@ namespace LifetimeIntegration.LifetimeRoles {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/RoleManagementService/Role_GetPermissions", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("PlatformRolePermissions")]
-        public EnvironmentPermissionForRole[] Role_GetPermissions(WebServiceSimpleAuthentication Authentication, string RoleName, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Role_GetPermissions(WebServiceSimpleAuthentication Authentication, string RoleName, out APIStatus Status, out EnvironmentPermissionForRole[] PlatformRolePermissions) {
             object[] results = this.Invoke("Role_GetPermissions", new object[] {
                         Authentication,
                         RoleName});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((EnvironmentPermissionForRole[])(results[0]));
+            PlatformRolePermissions = ((EnvironmentPermissionForRole[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -679,18 +679,18 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -713,10 +713,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public PlatformUser[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((PlatformUser[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -729,10 +729,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformUser[] AffectedPlatformUsers {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformUser[])(this.results[2]));
             }
         }
     }
@@ -755,18 +755,18 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -789,10 +789,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public PlatformRole Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((PlatformRole)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -805,10 +805,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformRole PlatformRole {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformRole)(this.results[2]));
             }
         }
     }
@@ -831,10 +831,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public PlatformRole[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((PlatformRole[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -847,10 +847,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public bool Success {
+        public PlatformRole[] PlatformRoles {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((PlatformRole[])(this.results[2]));
             }
         }
     }
@@ -873,10 +873,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public EnvironmentPermissionForRole[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((EnvironmentPermissionForRole[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -889,10 +889,10 @@ namespace LifetimeIntegration.LifetimeRoles {
         }
         
         /// <remarks/>
-        public bool Success {
+        public EnvironmentPermissionForRole[] PlatformRolePermissions {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((EnvironmentPermissionForRole[])(this.results[2]));
             }
         }
     }

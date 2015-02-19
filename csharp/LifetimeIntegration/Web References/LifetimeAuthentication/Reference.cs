@@ -74,14 +74,14 @@ namespace LifetimeIntegration.LifetimeAuthentication {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/AuthenticationService/Authentication_GetToken", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Token")]
-        public string Authentication_GetToken(string Username, string Password, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Authentication_GetToken(string Username, string Password, out APIStatus Status, out string Token) {
             object[] results = this.Invoke("Authentication_GetToken", new object[] {
                         Username,
                         Password});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((string)(results[0]));
+            Token = ((string)(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -200,10 +200,10 @@ namespace LifetimeIntegration.LifetimeAuthentication {
         }
         
         /// <remarks/>
-        public string Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -216,10 +216,10 @@ namespace LifetimeIntegration.LifetimeAuthentication {
         }
         
         /// <remarks/>
-        public bool Success {
+        public string Token {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((string)(this.results[2]));
             }
         }
     }

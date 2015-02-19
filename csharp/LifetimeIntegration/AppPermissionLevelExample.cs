@@ -20,10 +20,11 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            ApplicationPermissionLevel[] permissionLevels = null;
 
             // Invoke the ApplicationPermissionLevel_List web method
             // WS returns a boolean and status code to signal success            
-            ApplicationPermissionLevel[] permissionLevels = service.ApplicationPermissionLevel_List(authentication,out status, out success);
+            success = service.ApplicationPermissionLevel_List(authentication, out status, out permissionLevels);
             
 
             // If the call was successful, print the permission levels available

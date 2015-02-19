@@ -21,10 +21,10 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            PlatformTeam team = null;
 
             //Invoke the Team_Details web method
-            PlatformTeam team = null;
-            status = service.Team_Details(authentication, "Customer Portal team", out team, out success);
+            success = service.Team_GetDetails(authentication, "Customer Portal team", out status, out team);
 
             //If the call was successful, print information about the role
             if (success) {

@@ -79,13 +79,13 @@ namespace LifetimeIntegration.LifetimeEnvironments {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/EnvironmentManagementService/Environment_List", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("Environments")]
-        public EnvironmentInfo[] Environment_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Environment_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out EnvironmentInfo[] Environments) {
             object[] results = this.Invoke("Environment_List", new object[] {
                         Authentication});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((EnvironmentInfo[])(results[0]));
+            Environments = ((EnvironmentInfo[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -112,13 +112,13 @@ namespace LifetimeIntegration.LifetimeEnvironments {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/EnvironmentManagementService/EnvironmentPermissionLevel_L" +
             "ist", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("RolePermissionLevels")]
-        public EnvironmentPermissionLevel[] EnvironmentPermissionLevel_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool EnvironmentPermissionLevel_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out EnvironmentPermissionLevel[] RolePermissionLevels) {
             object[] results = this.Invoke("EnvironmentPermissionLevel_List", new object[] {
                         Authentication});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((EnvironmentPermissionLevel[])(results[0]));
+            RolePermissionLevels = ((EnvironmentPermissionLevel[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -305,63 +305,6 @@ namespace LifetimeIntegration.LifetimeEnvironments {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
-    public partial class APIStatus {
-        
-        private int idField;
-        
-        private int responseIdField;
-        
-        private string responseMessageField;
-        
-        private string responseAdditionalInfoField;
-        
-        /// <remarks/>
-        public int Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ResponseId {
-            get {
-                return this.responseIdField;
-            }
-            set {
-                this.responseIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ResponseMessage {
-            get {
-                return this.responseMessageField;
-            }
-            set {
-                this.responseMessageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ResponseAdditionalInfo {
-            get {
-                return this.responseAdditionalInfoField;
-            }
-            set {
-                this.responseAdditionalInfoField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
     public partial class EnvironmentInfo {
         
         private string keyField;
@@ -510,6 +453,63 @@ namespace LifetimeIntegration.LifetimeEnvironments {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
+    public partial class APIStatus {
+        
+        private int idField;
+        
+        private int responseIdField;
+        
+        private string responseMessageField;
+        
+        private string responseAdditionalInfoField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ResponseId {
+            get {
+                return this.responseIdField;
+            }
+            set {
+                this.responseIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ResponseMessage {
+            get {
+                return this.responseMessageField;
+            }
+            set {
+                this.responseMessageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ResponseAdditionalInfo {
+            get {
+                return this.responseAdditionalInfoField;
+            }
+            set {
+                this.responseAdditionalInfoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
     public delegate void Environment_ListCompletedEventHandler(object sender, Environment_ListCompletedEventArgs e);
     
@@ -527,10 +527,10 @@ namespace LifetimeIntegration.LifetimeEnvironments {
         }
         
         /// <remarks/>
-        public EnvironmentInfo[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((EnvironmentInfo[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -543,10 +543,10 @@ namespace LifetimeIntegration.LifetimeEnvironments {
         }
         
         /// <remarks/>
-        public bool Success {
+        public EnvironmentInfo[] Environments {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((EnvironmentInfo[])(this.results[2]));
             }
         }
     }
@@ -569,10 +569,10 @@ namespace LifetimeIntegration.LifetimeEnvironments {
         }
         
         /// <remarks/>
-        public EnvironmentPermissionLevel[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((EnvironmentPermissionLevel[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -585,10 +585,10 @@ namespace LifetimeIntegration.LifetimeEnvironments {
         }
         
         /// <remarks/>
-        public bool Success {
+        public EnvironmentPermissionLevel[] RolePermissionLevels {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((EnvironmentPermissionLevel[])(this.results[2]));
             }
         }
     }

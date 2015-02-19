@@ -17,11 +17,12 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            string token = "";
             
 
             // Authentication token to be used when invoking other services
             // WS returns a boolean and status code to signal success
-            string token = service.Authentication_GetToken(username, password, out status, out success);
+            success = service.Authentication_GetToken(username, password, out status, out token);
 
             // If the call was successful, print the session token obtained
             if (success) {

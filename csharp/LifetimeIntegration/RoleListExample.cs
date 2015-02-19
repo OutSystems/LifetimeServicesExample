@@ -21,9 +21,10 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            PlatformRole[] roles = null;
 
             //Invoke the Role_List web method
-            PlatformRole[] roles = service.Role_List(authentication, out status, out success);
+            success = service.Role_List(authentication, out status, out roles);
 
             //If the call was successful, print information about the role
             if (success) {

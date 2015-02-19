@@ -21,12 +21,20 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="Application_ListResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Applications" type="s0:ArrayOfApplicationInfo" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="Applications" type="s0:ArrayOfApplicationInfo" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="APIStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:complexType name="ArrayOfApplicationInfo">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="ApplicationInfo" nillable="true" type="s0:ApplicationInfo" />
@@ -60,15 +68,7 @@ To use this API you need to send an authentication argument with username/passwo
           <s:element minOccurs="0" maxOccurs="1" name="LastPublishedBy" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="APIStatus">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ResponseId" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ResponseAdditionalInfo" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="Application_SetTag_Bulk">
+      <s:element name="Application_SetTag">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
@@ -94,32 +94,11 @@ To use this API you need to send an authentication argument with username/passwo
           <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Application_SetTag_BulkResponse">
+      <s:element name="Application_SetTagResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Solution_PackAndDownload">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="s0:WebServiceSimpleAuthentication" />
-            <s:element minOccurs="0" maxOccurs="1" name="EnvironmentKey" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="ApplicationTagInfo" type="s0:ArrayOfApplicationTag" />
-            <s:element minOccurs="0" maxOccurs="1" name="SolutionName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="SolutionDescription" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Solution_PackAndDownloadResponse">
-        <s:complexType>
-          <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
-            <s:element minOccurs="0" maxOccurs="1" name="ApplicationSolutionBinary" type="s:base64Binary" />
-            <s:element minOccurs="0" maxOccurs="1" name="ApplicationSolutionSize" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -133,9 +112,9 @@ To use this API you need to send an authentication argument with username/passwo
       <s:element name="ApplicationPermissionLevel_ListResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissionLevels" type="s0:ArrayOfApplicationPermissionLevel" />
-            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s0:APIStatus" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationPermissionLevels" type="s0:ArrayOfApplicationPermissionLevel" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -162,17 +141,11 @@ To use this API you need to send an authentication argument with username/passwo
   <wsdl:message name="Application_ListSoapOut">
     <wsdl:part name="parameters" element="s0:Application_ListResponse" />
   </wsdl:message>
-  <wsdl:message name="Application_SetTag_BulkSoapIn">
-    <wsdl:part name="parameters" element="s0:Application_SetTag_Bulk" />
+  <wsdl:message name="Application_SetTagSoapIn">
+    <wsdl:part name="parameters" element="s0:Application_SetTag" />
   </wsdl:message>
-  <wsdl:message name="Application_SetTag_BulkSoapOut">
-    <wsdl:part name="parameters" element="s0:Application_SetTag_BulkResponse" />
-  </wsdl:message>
-  <wsdl:message name="Solution_PackAndDownloadSoapIn">
-    <wsdl:part name="parameters" element="s0:Solution_PackAndDownload" />
-  </wsdl:message>
-  <wsdl:message name="Solution_PackAndDownloadSoapOut">
-    <wsdl:part name="parameters" element="s0:Solution_PackAndDownloadResponse" />
+  <wsdl:message name="Application_SetTagSoapOut">
+    <wsdl:part name="parameters" element="s0:Application_SetTagResponse" />
   </wsdl:message>
   <wsdl:message name="ApplicationPermissionLevel_ListSoapIn">
     <wsdl:part name="parameters" element="s0:ApplicationPermissionLevel_List" />
@@ -186,15 +159,10 @@ To use this API you need to send an authentication argument with username/passwo
       <wsdl:input message="tns:Application_ListSoapIn" />
       <wsdl:output message="tns:Application_ListSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Application_SetTag_Bulk">
+    <wsdl:operation name="Application_SetTag">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets a tag for each application in a given environment.</wsdl:documentation>
-      <wsdl:input message="tns:Application_SetTag_BulkSoapIn" />
-      <wsdl:output message="tns:Application_SetTag_BulkSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Solution_PackAndDownload">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a solution binary file containing a set of applications given their versions.</wsdl:documentation>
-      <wsdl:input message="tns:Solution_PackAndDownloadSoapIn" />
-      <wsdl:output message="tns:Solution_PackAndDownloadSoapOut" />
+      <wsdl:input message="tns:Application_SetTagSoapIn" />
+      <wsdl:output message="tns:Application_SetTagSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ApplicationPermissionLevel_List">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The list of permission levels that a platform user has over an application.</wsdl:documentation>
@@ -213,17 +181,8 @@ To use this API you need to send an authentication argument with username/passwo
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Application_SetTag_Bulk">
-      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_SetTag_Bulk" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Solution_PackAndDownload">
-      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Solution_PackAndDownload" style="document" />
+    <wsdl:operation name="Application_SetTag">
+      <soap:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_SetTag" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -252,17 +211,8 @@ To use this API you need to send an authentication argument with username/passwo
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Application_SetTag_Bulk">
-      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_SetTag_Bulk" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Solution_PackAndDownload">
-      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Solution_PackAndDownload" style="document" />
+    <wsdl:operation name="Application_SetTag">
+      <soap12:operation soapAction="http://LifeTimeServices/ApplicationManagementService/Application_SetTag" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

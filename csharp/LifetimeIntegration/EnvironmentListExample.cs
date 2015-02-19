@@ -21,9 +21,10 @@ namespace LifetimeIntegration {
             // The status of the WS call
             bool success = false;
             APIStatus status = null;
+            EnvironmentInfo[] environments = null;
 
             //Invoke the Environment_List web method
-            EnvironmentInfo[] environments = service.Environment_List(authentication, out status, out success);
+            success = service.Environment_List(authentication, out status, out environments);
 
             //If the call was successful, print information about the environments
             if (success) {

@@ -31,9 +31,7 @@ namespace LifetimeIntegration.LifetimeApplications {
         
         private System.Threading.SendOrPostCallback Application_ListOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Application_SetTag_BulkOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback Solution_PackAndDownloadOperationCompleted;
+        private System.Threading.SendOrPostCallback Application_SetTagOperationCompleted;
         
         private System.Threading.SendOrPostCallback ApplicationPermissionLevel_ListOperationCompleted;
         
@@ -79,23 +77,20 @@ namespace LifetimeIntegration.LifetimeApplications {
         public event Application_ListCompletedEventHandler Application_ListCompleted;
         
         /// <remarks/>
-        public event Application_SetTag_BulkCompletedEventHandler Application_SetTag_BulkCompleted;
-        
-        /// <remarks/>
-        public event Solution_PackAndDownloadCompletedEventHandler Solution_PackAndDownloadCompleted;
+        public event Application_SetTagCompletedEventHandler Application_SetTagCompleted;
         
         /// <remarks/>
         public event ApplicationPermissionLevel_ListCompletedEventHandler ApplicationPermissionLevel_ListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/ApplicationManagementService/Application_List", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("Applications")]
-        public ApplicationInfo[] Application_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Application_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out ApplicationInfo[] Applications) {
             object[] results = this.Invoke("Application_List", new object[] {
                         Authentication});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((ApplicationInfo[])(results[0]));
+            Applications = ((ApplicationInfo[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -120,89 +115,48 @@ namespace LifetimeIntegration.LifetimeApplications {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/ApplicationManagementService/Application_SetTag_Bulk", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Application_SetTag_Bulk(WebServiceSimpleAuthentication Authentication, EnvironmentApplicationTagList EnvironmentApplicationsForTag, out bool Success) {
-            object[] results = this.Invoke("Application_SetTag_Bulk", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/ApplicationManagementService/Application_SetTag", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool Application_SetTag(WebServiceSimpleAuthentication Authentication, EnvironmentApplicationTagList EnvironmentApplicationsForTag, out APIStatus Status) {
+            object[] results = this.Invoke("Application_SetTag", new object[] {
                         Authentication,
                         EnvironmentApplicationsForTag});
-            Success = ((bool)(results[1]));
-            return ((APIStatus)(results[0]));
+            Status = ((APIStatus)(results[1]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Application_SetTag_BulkAsync(WebServiceSimpleAuthentication Authentication, EnvironmentApplicationTagList EnvironmentApplicationsForTag) {
-            this.Application_SetTag_BulkAsync(Authentication, EnvironmentApplicationsForTag, null);
+        public void Application_SetTagAsync(WebServiceSimpleAuthentication Authentication, EnvironmentApplicationTagList EnvironmentApplicationsForTag) {
+            this.Application_SetTagAsync(Authentication, EnvironmentApplicationsForTag, null);
         }
         
         /// <remarks/>
-        public void Application_SetTag_BulkAsync(WebServiceSimpleAuthentication Authentication, EnvironmentApplicationTagList EnvironmentApplicationsForTag, object userState) {
-            if ((this.Application_SetTag_BulkOperationCompleted == null)) {
-                this.Application_SetTag_BulkOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApplication_SetTag_BulkOperationCompleted);
+        public void Application_SetTagAsync(WebServiceSimpleAuthentication Authentication, EnvironmentApplicationTagList EnvironmentApplicationsForTag, object userState) {
+            if ((this.Application_SetTagOperationCompleted == null)) {
+                this.Application_SetTagOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApplication_SetTagOperationCompleted);
             }
-            this.InvokeAsync("Application_SetTag_Bulk", new object[] {
+            this.InvokeAsync("Application_SetTag", new object[] {
                         Authentication,
-                        EnvironmentApplicationsForTag}, this.Application_SetTag_BulkOperationCompleted, userState);
+                        EnvironmentApplicationsForTag}, this.Application_SetTagOperationCompleted, userState);
         }
         
-        private void OnApplication_SetTag_BulkOperationCompleted(object arg) {
-            if ((this.Application_SetTag_BulkCompleted != null)) {
+        private void OnApplication_SetTagOperationCompleted(object arg) {
+            if ((this.Application_SetTagCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Application_SetTag_BulkCompleted(this, new Application_SetTag_BulkCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/ApplicationManagementService/Solution_PackAndDownload", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("Status")]
-        public APIStatus Solution_PackAndDownload(WebServiceSimpleAuthentication Authentication, string EnvironmentKey, ApplicationTag[] ApplicationTagInfo, string SolutionName, string SolutionDescription, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] out byte[] ApplicationSolutionBinary, out string ApplicationSolutionSize, out bool Success) {
-            object[] results = this.Invoke("Solution_PackAndDownload", new object[] {
-                        Authentication,
-                        EnvironmentKey,
-                        ApplicationTagInfo,
-                        SolutionName,
-                        SolutionDescription});
-            ApplicationSolutionBinary = ((byte[])(results[1]));
-            ApplicationSolutionSize = ((string)(results[2]));
-            Success = ((bool)(results[3]));
-            return ((APIStatus)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Solution_PackAndDownloadAsync(WebServiceSimpleAuthentication Authentication, string EnvironmentKey, ApplicationTag[] ApplicationTagInfo, string SolutionName, string SolutionDescription) {
-            this.Solution_PackAndDownloadAsync(Authentication, EnvironmentKey, ApplicationTagInfo, SolutionName, SolutionDescription, null);
-        }
-        
-        /// <remarks/>
-        public void Solution_PackAndDownloadAsync(WebServiceSimpleAuthentication Authentication, string EnvironmentKey, ApplicationTag[] ApplicationTagInfo, string SolutionName, string SolutionDescription, object userState) {
-            if ((this.Solution_PackAndDownloadOperationCompleted == null)) {
-                this.Solution_PackAndDownloadOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSolution_PackAndDownloadOperationCompleted);
-            }
-            this.InvokeAsync("Solution_PackAndDownload", new object[] {
-                        Authentication,
-                        EnvironmentKey,
-                        ApplicationTagInfo,
-                        SolutionName,
-                        SolutionDescription}, this.Solution_PackAndDownloadOperationCompleted, userState);
-        }
-        
-        private void OnSolution_PackAndDownloadOperationCompleted(object arg) {
-            if ((this.Solution_PackAndDownloadCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Solution_PackAndDownloadCompleted(this, new Solution_PackAndDownloadCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Application_SetTagCompleted(this, new Application_SetTagCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://LifeTimeServices/ApplicationManagementService/ApplicationPermissionLevel_L" +
             "ist", RequestNamespace="http://www.outsystems.com", ResponseNamespace="http://www.outsystems.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlArrayAttribute("ApplicationPermissionLevels")]
-        public ApplicationPermissionLevel[] ApplicationPermissionLevel_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out bool Success) {
+        [return: System.Xml.Serialization.XmlElementAttribute("Success")]
+        public bool ApplicationPermissionLevel_List(WebServiceSimpleAuthentication Authentication, out APIStatus Status, out ApplicationPermissionLevel[] ApplicationPermissionLevels) {
             object[] results = this.Invoke("ApplicationPermissionLevel_List", new object[] {
                         Authentication});
             Status = ((APIStatus)(results[1]));
-            Success = ((bool)(results[2]));
-            return ((ApplicationPermissionLevel[])(results[0]));
+            ApplicationPermissionLevels = ((ApplicationPermissionLevel[])(results[2]));
+            return ((bool)(results[0]));
         }
         
         /// <remarks/>
@@ -455,63 +409,6 @@ namespace LifetimeIntegration.LifetimeApplications {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
-    public partial class APIStatus {
-        
-        private int idField;
-        
-        private int responseIdField;
-        
-        private string responseMessageField;
-        
-        private string responseAdditionalInfoField;
-        
-        /// <remarks/>
-        public int Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ResponseId {
-            get {
-                return this.responseIdField;
-            }
-            set {
-                this.responseIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ResponseMessage {
-            get {
-                return this.responseMessageField;
-            }
-            set {
-                this.responseMessageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ResponseAdditionalInfo {
-            get {
-                return this.responseAdditionalInfoField;
-            }
-            set {
-                this.responseAdditionalInfoField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
     public partial class EnvironmentApplicationInfo {
         
         private string environmentKeyField;
@@ -705,6 +602,63 @@ namespace LifetimeIntegration.LifetimeApplications {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.outsystems.com")]
+    public partial class APIStatus {
+        
+        private int idField;
+        
+        private int responseIdField;
+        
+        private string responseMessageField;
+        
+        private string responseAdditionalInfoField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ResponseId {
+            get {
+                return this.responseIdField;
+            }
+            set {
+                this.responseIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ResponseMessage {
+            get {
+                return this.responseMessageField;
+            }
+            set {
+                this.responseMessageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ResponseAdditionalInfo {
+            get {
+                return this.responseAdditionalInfoField;
+            }
+            set {
+                this.responseAdditionalInfoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
     public delegate void Application_ListCompletedEventHandler(object sender, Application_ListCompletedEventArgs e);
     
@@ -722,10 +676,10 @@ namespace LifetimeIntegration.LifetimeApplications {
         }
         
         /// <remarks/>
-        public ApplicationInfo[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((ApplicationInfo[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -738,94 +692,44 @@ namespace LifetimeIntegration.LifetimeApplications {
         }
         
         /// <remarks/>
-        public bool Success {
+        public ApplicationInfo[] Applications {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((ApplicationInfo[])(this.results[2]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
-    public delegate void Application_SetTag_BulkCompletedEventHandler(object sender, Application_SetTag_BulkCompletedEventArgs e);
+    public delegate void Application_SetTagCompletedEventHandler(object sender, Application_SetTagCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Application_SetTag_BulkCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Application_SetTagCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Application_SetTag_BulkCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Application_SetTagCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public APIStatus Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool Success {
+        public APIStatus Status {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
-    public delegate void Solution_PackAndDownloadCompletedEventHandler(object sender, Solution_PackAndDownloadCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Solution_PackAndDownloadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Solution_PackAndDownloadCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public APIStatus Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((APIStatus)(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public byte[] ApplicationSolutionBinary {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((byte[])(this.results[1]));
-            }
-        }
-        
-        /// <remarks/>
-        public string ApplicationSolutionSize {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[2]));
-            }
-        }
-        
-        /// <remarks/>
-        public bool Success {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[3]));
+                return ((APIStatus)(this.results[1]));
             }
         }
     }
@@ -848,10 +752,10 @@ namespace LifetimeIntegration.LifetimeApplications {
         }
         
         /// <remarks/>
-        public ApplicationPermissionLevel[] Result {
+        public bool Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((ApplicationPermissionLevel[])(this.results[0]));
+                return ((bool)(this.results[0]));
             }
         }
         
@@ -864,10 +768,10 @@ namespace LifetimeIntegration.LifetimeApplications {
         }
         
         /// <remarks/>
-        public bool Success {
+        public ApplicationPermissionLevel[] ApplicationPermissionLevels {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[2]));
+                return ((ApplicationPermissionLevel[])(this.results[2]));
             }
         }
     }
