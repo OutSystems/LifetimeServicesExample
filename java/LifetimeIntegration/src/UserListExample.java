@@ -31,7 +31,8 @@ public class UserListExample {
 						user.getUsername(), user.getRoleName()));
 			}
 		} else {
-			//Implement error handling. See the possible error codes in the APIStatus structure documentation
+			// Implement error handling. 
+			// See the possible error codes in the APIStatus structure documentation
 		}
 	}
 }
