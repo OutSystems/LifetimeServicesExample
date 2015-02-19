@@ -11,8 +11,8 @@ public class AuthenticationExample {
 	public static String GetToken() {
  
 		// LifeTime credentials used to obtain a session token
-        String username = "joao.fernandes@outsystems.com";
-        String password = "outsystems";
+        String username = "username";
+        String password = "password";
         
         // Objects to store the values returned
         Holder<String> token = new Holder<String>();
